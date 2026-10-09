@@ -1,122 +1,230 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KG Neha Reddy | Finance, Analytics & Strategy</title>
-<meta name="description" content="Resume website of KG Neha Reddy: B.Tech in Computer Science and MBA in Finance & Business Analytics. Financial modeling, analytics, KPI reporting and automation.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neha's portfolio in analytics, finance, business strategy, and operations.">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Your Girl, Neha | Analytics &amp; Strategy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  
+  <header class="site-header" id="navigation">
+    <a class="brand" href="#home" aria-label="Your Girl, Neha — Home">
+      <span class="brand-small">a little about me</span>
+      <span class="brand-name">Your Girl, Neha</span>
+    </a>
 
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+        <span id="themeIcon" aria-hidden="true">☾</span>
+      </button>
 
-<header class="site-header" id="navigation">
-  <a href="#home" class="handwritten-brand">
-    <span>know more about your girl ~</span>
-    <strong>Kotha Gauni Neha Reddy</strong>
-  </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-  <button
-    class="menu-toggle"
-    id="menuToggle"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-    aria-controls="siteMenu"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+    <nav class="menu-panel" id="siteMenu" aria-label="Main navigation" hidden>
+      <a href="#home">Home</a>
+      <a href="#work">Work Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#mentions">Mentions</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <nav class="menu-panel" id="siteMenu" aria-label="Main navigation" hidden>
-    <a href="#home">Home</a>
-    <a href="#work">Work Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#mentions">Mentions</a>
-    <a href="#navigation">Navigation</a>
-  </nav>
-</header>
-
-<main>
-<section id="Home">
-  <div class="wrap">
-    <h2>About</h2>
-    <p style="max-width:44rem">I work at the intersection of finance, analytics and operations. My background in computer science helps me build the models, automations and dashboards behind planning and procurement decisions, and my finance training helps me tie that work to cost, risk and control. I enjoy structuring messy problems into frameworks that leaders can act on.</p>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <h2>Projects</h2>
-    <div class="cols">
-      <div class="box">
-        <h3>Sovereign credit ratings bias analysis</h3>
-        <p>Python analysis of financial data across the Quad nations, comparing how rating frameworks treat developed and emerging economies.</p>
+  <main>
+    <section class="hero section-anchor" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">FINANCE · DATA · STRATEGY</p>
+        <h1>Turning data into<br>decisions that matter.</h1>
+        <p class="hero-description">I connect analytics, finance and business strategy to turn complex problems into meaningful outcomes.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
+          <a class="button-secondary" href="#contact">Get in touch</a>
+        </div>
+        <p class="hero-note">Based in Hyderabad, India · Open to new opportunities</p>
       </div>
-      <div class="box">
-        <h3>Credit card customer churn analysis</h3>
-        <p>SQL, Python and Excel audit of customer data to find churn patterns, with retention frameworks built on customer segments.</p>
+      <div class="hero-side-note" aria-hidden="true"><span>CURIOUS BY NATURE</span><span>DATA-DRIVEN BY DESIGN</span></div>
+    </section>
+
+    <section class="section section-anchor" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">A QUICK INTRODUCTION</p>
+        <h2>A little about me.</h2>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="about-grid">
+        <p class="about-lead">I work at the intersection of finance, analytics and operations.</p>
+        <div class="about-copy">
+          <p>My computer science background helps me build models, automations and dashboards, while my finance training helps connect the analysis to cost, risk and control.</p>
+          <p>I enjoy turning messy business questions into structured frameworks that teams and leaders can act on.</p>
+        </div>
+      </div>
+    </section>
 
-<section id="work experience">
-  <div class="wrap">
-    <h2>Impact</h2>
-    <ul class="plain">
-      <li>Built a procurement cost-reduction framework using spend history, vendor pricing and demand forecasts, achieving a <strong>21% reduction in vendor pricing</strong>.</li>
-      <li>Designed a rule-based performance scoring engine in Excel for <strong>700+ people</strong>, supporting promotion decisions with root-cause testing and budget benchmarks.</li>
-      <li>Governed about <strong>&#8377;15 Cr a year</strong> of end-to-end settlements with strong data integrity, process controls and audit readiness.</li>
-      <li>Automated tracking and reporting, cutting manual errors and enabling daily efficiency reports and monthly executive decks.</li>
-      <li>Analysed field-effectiveness metrics across a network of <strong>9,300+ people</strong> and presented recommendations to senior leadership.</li>
-      <li>Led a company-wide learning management system rollout, covering data mapping, requirements, stakeholder alignment and training.</li>
-    </ul>
-  </div>
-</section>
+    <section class="section section-muted section-anchor" id="skills">
+      <div class="section-heading">
+        <p class="eyebrow">WHAT I BRING</p>
+        <h2>Skills &amp; toolkit.</h2>
+      </div>
+      <div class="skill-groups">
+        <article class="skill-group">
+          <h3>Data &amp; analytics</h3>
+          <ul class="tags">
+            <li>SQL</li><li>Python</li><li>Advanced Excel</li><li>Power BI</li><li>Tableau</li><li>KPI reporting</li><li>Data visualization</li>
+          </ul>
+        </article>
+        <article class="skill-group">
+          <h3>Finance &amp; strategy</h3>
+          <ul class="tags">
+            <li>Budget planning</li><li>Demand forecasting</li><li>Variance analysis</li><li>Procurement analytics</li><li>Strategic planning</li><li>Financial modeling</li>
+          </ul>
+        </article>
+        <article class="skill-group">
+          <h3>Business &amp; operations</h3>
+          <ul class="tags">
+            <li>Root cause analysis</li><li>Process mapping</li><li>Stakeholder management</li><li>Requirements analysis</li><li>Executive reporting</li><li>Process governance</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
+    <section class="section section-anchor" id="work">
+      <div class="section-heading">
+        <p class="eyebrow">EXPERIENCE IN ACTION</p>
+        <h2>Work experience &amp; impact.</h2>
+        <p class="section-intro">A few examples of turning business needs into measurable improvements.</p>
+      </div>
+      <div class="experience-header">
+        <div>
+          <h3>Manager — Planning &amp; Strategy</h3>
+          <p class="muted">Bharat Financial Inclusion Limited (BFIL) · Hyderabad</p>
+        </div>
+        <span class="experience-period">2024 — Present</span>
+      </div>
+      <div class="impact-list">
+        <article class="impact-item">
+          <span class="impact-number">01</span>
+          <div>
+            <h3>Procurement cost reduction</h3>
+            <p>Built a vendor pricing analysis framework using historical data, revised pricing and demand projections, contributing to a <strong>21% reduction in vendor pricing</strong>.</p>
+          </div>
+        </article>
+        <article class="impact-item">
+          <span class="impact-number">02</span>
+          <div>
+            <h3>Performance scoring engine</h3>
+            <p>Designed an Excel-based performance scoring and rule engine for <strong>700+ people</strong>, supporting evaluation decisions with root-cause testing and budget benchmarks.</p>
+          </div>
+        </article>
+        <article class="impact-item">
+          <span class="impact-number">03</span>
+          <div>
+            <h3>Operational reporting</h3>
+            <p>Automated tracking and reporting to reduce manual effort and support daily efficiency updates and monthly executive presentations.</p>
+          </div>
+        </article>
+        <article class="impact-item">
+          <span class="impact-number">04</span>
+          <div>
+            <h3>Field effectiveness &amp; leadership reporting</h3>
+            <p>Analysed field-effectiveness metrics across a network of <strong>9,300+ people</strong> and presented findings to senior leadership.</p>
+          </div>
+        </article>
+        <article class="impact-item">
+          <span class="impact-number">05</span>
+          <div>
+            <h3>Learning management system rollout</h3>
+            <p>Supported a company-wide LMS rollout covering data mapping, requirements, stakeholder alignment and user training.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<section id="Mentions">
-  <div class="wrap">
-    <h2>Education and recognition</h2>
-    <div class="item">
-      <h3>MBA, Finance &amp; Business Analytics</h3>
-      <p class="meta">NALSAR University of Law, Hyderabad &middot; 2022&ndash;2024</p>
-    </div>
-    <div class="item">
-      <h3>B.Tech, Computer Science &amp; Engineering</h3>
-      <p class="meta">St. Martin's Engineering College, Hyderabad &middot; 2017&ndash;2021</p>
-    </div>
-    <div class="item">
-      <h3>Publication</h3>
-      <p class="meta">Book chapter (2024): "Virtual Dilemmas: Legal and Ethical Rollercoasters in Immersive Technology", in <em>Multidisciplinary Applications of Extended Reality for Human Experience</em>.</p>
-    </div>
-    <div class="item">
-      <h3>Leadership</h3>
-      <p class="meta">President of a speakers' club, mentoring 50+ members. Vice President of a data analytics club, organising its first analytics summit and a Tableau workshop.</p>
-    </div>
-  </div>
-</section>
+    <section class="section section-muted section-anchor" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">THINGS I’VE BUILT &amp; EXPLORED</p>
+        <h2>Selected projects.</h2>
+        <p class="section-intro">A mix of business analysis, data exploration and applied machine learning.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-topline"><span class="project-index">PROJECT 01</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+          <h3>Adverse drug reaction prediction</h3>
+          <p>Explored chemical structure and side-effect patterns using molecular fingerprints and multi-label machine learning to study drug safety signals.</p>
+          <ul class="project-tags"><li>Python</li><li>RDKit</li><li>scikit-learn</li></ul>
+        </article>
+        <article class="project-card">
+          <div class="project-topline"><span class="project-index">PROJECT 02</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+          <h3>Sovereign credit ratings bias analysis</h3>
+          <p>Compared financial indicators and rating frameworks across Quad nations to explore how developed and emerging economies may be assessed.</p>
+          <ul class="project-tags"><li>Python</li><li>Financial data</li><li>Analysis</li></ul>
+        </article>
+        <article class="project-card">
+          <div class="project-topline"><span class="project-index">PROJECT 03</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+          <h3>Credit card customer churn</h3>
+          <p>Audited customer data to identify churn patterns and explored customer segments that could inform retention strategies.</p>
+          <ul class="project-tags"><li>SQL</li><li>Python</li><li>Excel</li></ul>
+        </article>
+        <article class="project-card">
+          <div class="project-topline"><span class="project-index">PROJECT 04</span><span class="project-arrow" aria-hidden="true">↗</span></div>
+          <h3>Performance analytics framework</h3>
+          <p>Built a rules-based scoring approach and structured reporting to make employee performance assessments more consistent and explainable.</p>
+          <ul class="project-tags"><li>Advanced Excel</li><li>Rule engine</li><li>KPI design</li></ul>
+        </article>
+      </div>
+    </section>
 
-<section id="Navigate" class="Navigate">
-  <div class="wrap">
-    <h2>Contact</h2>
-    <p>Open to conversations about finance, analytics and strategy roles.</p>
-    <p>
-      Email: <a href="mailto:nehardy@zohomail.com">nehardy@zohomail.com</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/YOUR-PROFILE/">linkedin.com/in/YOUR-PROFILE</a>
-    </p>
-  </div>
-</section>
-</main>
+    <section class="section section-anchor" id="education">
+      <div class="section-heading">
+        <p class="eyebrow">THE FOUNDATIONS</p>
+        <h2>Education &amp; leadership.</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="timeline-year">2022 — 2024</span>
+          <div><h3>MBA, Finance &amp; Business Analytics</h3><p class="muted">NALSAR University of Law, Hyderabad</p></div>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-year">2017 — 2021</span>
+          <div><h3>B.Tech, Computer Science &amp; Engineering</h3><p class="muted">St. Martin’s Engineering College, Hyderabad</p></div>
+        </article>
+        <article class="timeline-item" id="mentions">
+          <span class="timeline-year">2024</span>
+          <div><h3>Publication</h3><p class="muted">Book chapter: “Virtual Dilemmas: Legal and Ethical Rollercoasters in Immersive Technology,” in <em>Multidisciplinary Applications of Extended Reality for Human Experience</em>.</p></div>
+        </article>
+        <article class="timeline-item">
+          <span class="timeline-year">Leadership</span>
+          <div><h3>Community &amp; mentorship</h3><p class="muted">President of a speakers’ club, mentoring 50+ members; Vice President of a data analytics club, helping organise an analytics summit and Tableau workshop.</p></div>
+        </article>
+      </div>
+    </section>
 
-<footer>
-  <div class="wrap">&copy; <span id="yr">2026</span> KG Neha Reddy</div>
-</footer>
-<script src="script.js" defer></script>
+    <section class="contact-section section-anchor" id="contact">
+      <div class="contact-inner">
+        <p class="eyebrow">LET’S CONNECT</p>
+        <h2>Have a good problem<br>to solve? Let’s talk.</h2>
+        <p>Open to conversations about analytics, finance, business strategy and operations roles.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="mailto:nehardy@zohomail.com">Email me ↗</a>
+          <a class="button-secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn</a>
+        </div>
+        <p class="contact-reminder">Replace the LinkedIn link with your personal profile URL before publishing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year">2026</span> Your Girl, Neha</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
 </body>
 </html>
