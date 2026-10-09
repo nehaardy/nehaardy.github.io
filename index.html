@@ -1,230 +1,43 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Neha's portfolio in analytics, finance, business strategy, and operations.">
-  <meta name="theme-color" content="#f7f8fa">
-  <title>Your Girl, Neha | Analytics &amp; Strategy</title>
+<header class="site-header">
+  <a class="brand" href="#home">Your Girl, Neha</a>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header class="site-header" id="navigation">
-    <a class="brand" href="#home" aria-label="Your Girl, Neha — Home">
-      <span class="brand-small">a little about me</span>
-      <span class="brand-name">Your Girl, Neha</span>
-    </a>
+  <div class="header-actions">
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Switch to light theme"
+      title="Switch theme"
+      aria-pressed="true"
+    >
+      ☀️
+    </button>
 
-    <div class="header-actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
-        <span id="themeIcon" aria-hidden="true">☾</span>
-      </button>
+    <button
+      id="menu-toggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<nav id="site-nav" class="site-nav" aria-label="Main navigation">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Work Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#mentions">Mentions</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <nav class="menu-panel" id="siteMenu" aria-label="Main navigation" hidden>
-      <a href="#home">Home</a>
-      <a href="#work">Work Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#mentions">Mentions</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero section-anchor" id="home">
-      <div class="hero-content">
-        <p class="eyebrow">FINANCE · DATA · STRATEGY</p>
-        <h1>Turning data into<br>decisions that matter.</h1>
-        <p class="hero-description">I connect analytics, finance and business strategy to turn complex problems into meaningful outcomes.</p>
-        <div class="hero-actions">
-          <a class="button-primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a>
-          <a class="button-secondary" href="#contact">Get in touch</a>
-        </div>
-        <p class="hero-note">Based in Hyderabad, India · Open to new opportunities</p>
-      </div>
-      <div class="hero-side-note" aria-hidden="true"><span>CURIOUS BY NATURE</span><span>DATA-DRIVEN BY DESIGN</span></div>
-    </section>
-
-    <section class="section section-anchor" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">A QUICK INTRODUCTION</p>
-        <h2>A little about me.</h2>
-      </div>
-      <div class="about-grid">
-        <p class="about-lead">I work at the intersection of finance, analytics and operations.</p>
-        <div class="about-copy">
-          <p>My computer science background helps me build models, automations and dashboards, while my finance training helps connect the analysis to cost, risk and control.</p>
-          <p>I enjoy turning messy business questions into structured frameworks that teams and leaders can act on.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted section-anchor" id="skills">
-      <div class="section-heading">
-        <p class="eyebrow">WHAT I BRING</p>
-        <h2>Skills &amp; toolkit.</h2>
-      </div>
-      <div class="skill-groups">
-        <article class="skill-group">
-          <h3>Data &amp; analytics</h3>
-          <ul class="tags">
-            <li>SQL</li><li>Python</li><li>Advanced Excel</li><li>Power BI</li><li>Tableau</li><li>KPI reporting</li><li>Data visualization</li>
-          </ul>
-        </article>
-        <article class="skill-group">
-          <h3>Finance &amp; strategy</h3>
-          <ul class="tags">
-            <li>Budget planning</li><li>Demand forecasting</li><li>Variance analysis</li><li>Procurement analytics</li><li>Strategic planning</li><li>Financial modeling</li>
-          </ul>
-        </article>
-        <article class="skill-group">
-          <h3>Business &amp; operations</h3>
-          <ul class="tags">
-            <li>Root cause analysis</li><li>Process mapping</li><li>Stakeholder management</li><li>Requirements analysis</li><li>Executive reporting</li><li>Process governance</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-anchor" id="work">
-      <div class="section-heading">
-        <p class="eyebrow">EXPERIENCE IN ACTION</p>
-        <h2>Work experience &amp; impact.</h2>
-        <p class="section-intro">A few examples of turning business needs into measurable improvements.</p>
-      </div>
-      <div class="experience-header">
-        <div>
-          <h3>Manager — Planning &amp; Strategy</h3>
-          <p class="muted">Bharat Financial Inclusion Limited (BFIL) · Hyderabad</p>
-        </div>
-        <span class="experience-period">2024 — Present</span>
-      </div>
-      <div class="impact-list">
-        <article class="impact-item">
-          <span class="impact-number">01</span>
-          <div>
-            <h3>Procurement cost reduction</h3>
-            <p>Built a vendor pricing analysis framework using historical data, revised pricing and demand projections, contributing to a <strong>21% reduction in vendor pricing</strong>.</p>
-          </div>
-        </article>
-        <article class="impact-item">
-          <span class="impact-number">02</span>
-          <div>
-            <h3>Performance scoring engine</h3>
-            <p>Designed an Excel-based performance scoring and rule engine for <strong>700+ people</strong>, supporting evaluation decisions with root-cause testing and budget benchmarks.</p>
-          </div>
-        </article>
-        <article class="impact-item">
-          <span class="impact-number">03</span>
-          <div>
-            <h3>Operational reporting</h3>
-            <p>Automated tracking and reporting to reduce manual effort and support daily efficiency updates and monthly executive presentations.</p>
-          </div>
-        </article>
-        <article class="impact-item">
-          <span class="impact-number">04</span>
-          <div>
-            <h3>Field effectiveness &amp; leadership reporting</h3>
-            <p>Analysed field-effectiveness metrics across a network of <strong>9,300+ people</strong> and presented findings to senior leadership.</p>
-          </div>
-        </article>
-        <article class="impact-item">
-          <span class="impact-number">05</span>
-          <div>
-            <h3>Learning management system rollout</h3>
-            <p>Supported a company-wide LMS rollout covering data mapping, requirements, stakeholder alignment and user training.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-muted section-anchor" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">THINGS I’VE BUILT &amp; EXPLORED</p>
-        <h2>Selected projects.</h2>
-        <p class="section-intro">A mix of business analysis, data exploration and applied machine learning.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="project-topline"><span class="project-index">PROJECT 01</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-          <h3>Adverse drug reaction prediction</h3>
-          <p>Explored chemical structure and side-effect patterns using molecular fingerprints and multi-label machine learning to study drug safety signals.</p>
-          <ul class="project-tags"><li>Python</li><li>RDKit</li><li>scikit-learn</li></ul>
-        </article>
-        <article class="project-card">
-          <div class="project-topline"><span class="project-index">PROJECT 02</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-          <h3>Sovereign credit ratings bias analysis</h3>
-          <p>Compared financial indicators and rating frameworks across Quad nations to explore how developed and emerging economies may be assessed.</p>
-          <ul class="project-tags"><li>Python</li><li>Financial data</li><li>Analysis</li></ul>
-        </article>
-        <article class="project-card">
-          <div class="project-topline"><span class="project-index">PROJECT 03</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-          <h3>Credit card customer churn</h3>
-          <p>Audited customer data to identify churn patterns and explored customer segments that could inform retention strategies.</p>
-          <ul class="project-tags"><li>SQL</li><li>Python</li><li>Excel</li></ul>
-        </article>
-        <article class="project-card">
-          <div class="project-topline"><span class="project-index">PROJECT 04</span><span class="project-arrow" aria-hidden="true">↗</span></div>
-          <h3>Performance analytics framework</h3>
-          <p>Built a rules-based scoring approach and structured reporting to make employee performance assessments more consistent and explainable.</p>
-          <ul class="project-tags"><li>Advanced Excel</li><li>Rule engine</li><li>KPI design</li></ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-anchor" id="education">
-      <div class="section-heading">
-        <p class="eyebrow">THE FOUNDATIONS</p>
-        <h2>Education &amp; leadership.</h2>
-      </div>
-      <div class="timeline">
-        <article class="timeline-item">
-          <span class="timeline-year">2022 — 2024</span>
-          <div><h3>MBA, Finance &amp; Business Analytics</h3><p class="muted">NALSAR University of Law, Hyderabad</p></div>
-        </article>
-        <article class="timeline-item">
-          <span class="timeline-year">2017 — 2021</span>
-          <div><h3>B.Tech, Computer Science &amp; Engineering</h3><p class="muted">St. Martin’s Engineering College, Hyderabad</p></div>
-        </article>
-        <article class="timeline-item" id="mentions">
-          <span class="timeline-year">2024</span>
-          <div><h3>Publication</h3><p class="muted">Book chapter: “Virtual Dilemmas: Legal and Ethical Rollercoasters in Immersive Technology,” in <em>Multidisciplinary Applications of Extended Reality for Human Experience</em>.</p></div>
-        </article>
-        <article class="timeline-item">
-          <span class="timeline-year">Leadership</span>
-          <div><h3>Community &amp; mentorship</h3><p class="muted">President of a speakers’ club, mentoring 50+ members; Vice President of a data analytics club, helping organise an analytics summit and Tableau workshop.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact-section section-anchor" id="contact">
-      <div class="contact-inner">
-        <p class="eyebrow">LET’S CONNECT</p>
-        <h2>Have a good problem<br>to solve? Let’s talk.</h2>
-        <p>Open to conversations about analytics, finance, business strategy and operations roles.</p>
-        <div class="hero-actions">
-          <a class="button-primary" href="mailto:nehardy@zohomail.com">Email me ↗</a>
-          <a class="button-secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Find me on LinkedIn</a>
-        </div>
-        <p class="contact-reminder">Replace the LinkedIn link with your personal profile URL before publishing.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <span>© <span id="year">2026</span> Your Girl, Neha</span>
-    <a href="#home">Back to top ↑</a>
-  </footer>
-</body>
-</html>
+<script src="script.js" defer></script>
