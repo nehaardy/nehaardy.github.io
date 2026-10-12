@@ -80,12 +80,12 @@ h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
 .stars i{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;
   opacity:.7;animation:twinkle var(--d,4s) ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.35)}}
-
+ 
 .neb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;opacity:.26}
 .n1{width:520px;height:520px;background:#2a22c4;top:-10%;left:-8%;animation:drift1 26s ease-in-out infinite}
 .n2{width:480px;height:480px;background:#5a2cc8;top:35%;right:-12%;animation:drift2 30s ease-in-out infinite}
 .n3{width:440px;height:440px;background:#1560d0;bottom:-14%;left:28%;animation:drift3 34s ease-in-out infinite}
-.n4{width:260px;height:260px;background:#ff8fd1;opacity:.10;bottom:10%;left:-4%;animation:drift2 38s ease-in-out infinite reverse}
+.n4{width:260px;height:260px;background: #ff8fd1;opacity:.10;bottom:10%;left:-4%;animation:drift2 38s ease-in-out infinite reverse}
 body.light-theme .neb{opacity:.16}
 @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18vw,14vh) scale(1.15)}}
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-16vw,-12vh) scale(1.2)}}
@@ -220,10 +220,10 @@ main{overflow-x:clip}
 .orbit i{position:absolute;width:14px;height:14px;background:var(--gold);
   clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
   filter:drop-shadow(0 0 6px var(--gold))}
-.orbit i:nth-child(1){top:-7px;left:calc(50% - 7px)}
+.orbit i:nth-child(1){top:-7px;left:calc(50% - 7px);background:var(--gold);filter:drop-shadow(0 0 6px var(--gold))}
 .orbit i:nth-child(2){bottom:-7px;left:calc(50% - 7px);background:var(--blue);filter:drop-shadow(0 0 6px var(--blue))}
 .orbit i:nth-child(3){top:calc(50% - 7px);left:-7px;background:var(--violet);filter:drop-shadow(0 0 6px var(--violet))}
-.orbit i:nth-child(4){top:calc(50% - 7px);right:-7px}
+.orbit i:nth-child(4){top:calc(50% - 7px);right:-7px;background:var(--gold);filter:drop-shadow(0 0 6px var(--gold))}
 
 .frame{position:absolute;inset:0;margin:0;overflow:hidden;
   border-radius:999px 999px 30px 30px;border:3px solid var(--gold);
