@@ -1,995 +1,261 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Your Girl, Neha | Portfolio</title>
-    <meta name="description" content="The personal portfolio of Neha — business, finance, strategy and analytics.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-    <style>
-        /* COLOUR PALETTE: PLUM, GOLD & IVORY */
-
-        :root {
-            --background: #24121f;
-            --surface: #321d2b;
-            --gold: #e6c784;
-            --ivory: #fff8ec;
-            --muted: #c8b9c3;
-
-            --heading-font: "Cormorant Garamond", serif;
-            --body-font: "DM Sans", sans-serif;
-            --script-font: "Great Vibes", cursive;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--background);
-            color: var(--ivory);
-            font-family: var(--body-font);
-            line-height: 1.7;
-            overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body.light-theme {
-            --background: #fff8ec;
-            --surface: #f2e6d7;
-            --gold: #765329;
-            --ivory: #321d2b;
-            --muted: #705e6a;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font: inherit;
-        }
-
-        ::selection {
-            background: var(--gold);
-            color: var(--background);
-        }
-
-        /* SUBTLE FAIRYTALE BACKGROUND */
-
-        .background-magic {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .glow {
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: var(--gold);
-            opacity: 0.055;
-            filter: blur(100px);
-        }
-
-        .glow-one {
-            top: 5%;
-            left: -150px;
-        }
-
-        .glow-two {
-            top: 55%;
-            right: -180px;
-        }
-
-        .stars {
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle, var(--gold) 1px, transparent 1.5px);
-            background-size: 83px 97px;
-            opacity: 0.18;
-        }
-
-        /* HEADER */
-
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--background);
-            border-bottom: 1px solid rgba(230, 199, 132, 0.25);
-        }
-
-        .header-inner {
-            max-width: 1180px;
-            min-height: 78px;
-            padding: 14px 28px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            color: var(--gold);
-            font-family: var(--script-font);
-            font-size: 30px;
-            white-space: nowrap;
-        }
-
-        .navigation {
-            display: flex;
-            align-items: center;
-            gap: 27px;
-        }
-
-        .navigation a {
-            font-size: 13px;
-            color: var(--muted);
-            transition: color 0.2s;
-        }
-
-        .navigation a:hover {
-            color: var(--gold);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .icon-button {
-            width: 39px;
-            height: 39px;
-            display: grid;
-            place-items: center;
-            background: transparent;
-            border: 1px solid rgba(230, 199, 132, 0.4);
-            border-radius: 50%;
-            color: var(--gold);
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .icon-button:hover {
-            background: var(--surface);
-        }
-
-        #menu-toggle,
-        #menu-close {
-            display: none;
-        }
-
-        /* GENERAL LAYOUT */
-
-        .container {
-            width: min(1100px, calc(100% - 48px));
-            margin: auto;
-        }
-
-        .section {
-            padding: 100px 0;
-            scroll-margin-top: 75px;
-        }
-
-        .eyebrow {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-
-        h1, h2, h3 {
-            font-family: var(--heading-font);
-            font-weight: 500;
-            line-height: 1.1;
-        }
-
-        h2 {
-            font-size: clamp(36px, 5vw, 52px);
-            margin-bottom: 20px;
-        }
-
-        .section-intro {
-            max-width: 610px;
-            color: var(--muted);
-            margin-bottom: 42px;
-        }
-
-        .gold {
-            color: var(--gold);
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 680px;
-            padding: 100px 0 85px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            align-items: center;
-            gap: 65px;
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 7vw, 82px);
-            margin-bottom: 22px;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-            font-style: italic;
-        }
-
-        .hero-description {
-            color: var(--muted);
-            max-width: 550px;
-            font-size: 15px;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 23px;
-            border: 1px solid var(--gold);
-            font-size: 13px;
-            font-weight: 600;
-            transition: 0.25s;
-        }
-
-        .button-primary {
-            background: var(--gold);
-            color: #24121f;
-        }
-
-        .button-secondary {
-            color: var(--gold);
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-        }
-
-        .hero-note {
-            margin-top: 35px;
-            color: var(--muted);
-            font-family: var(--heading-font);
-            font-size: 20px;
-            font-style: italic;
-        }
-
-        /* ROYAL ARCH */
-
-        .portrait-wrap {
-            display: flex;
-            justify-content: center;
-        }
-
-        .royal-arch {
-            width: min(100%, 320px);
-            min-height: 390px;
-            padding: 18px;
-            border: 1px solid var(--gold);
-            border-radius: 160px 160px 12px 12px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .royal-arch::before {
-            content: "";
-            position: absolute;
-            inset: 9px;
-            border: 1px solid rgba(230, 199, 132, 0.35);
-            border-radius: 155px 155px 8px 8px;
-            pointer-events: none;
-        }
-
-        .arch-content {
-            text-align: center;
-            padding: 28px;
-        }
-
-        .crown {
-            color: var(--gold);
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .arch-content h2 {
-            font-size: 42px;
-            margin-bottom: 12px;
-        }
-
-        .arch-content p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .arch-caption {
-            margin-top: 25px;
-            color: var(--gold);
-            font-family: var(--script-font);
-            font-size: 27px;
-        }
-
-        /* STATS */
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid rgba(230, 199, 132, 0.3);
-            border-bottom: 1px solid rgba(230, 199, 132, 0.3);
-        }
-
-        .stat {
-            padding: 28px 18px;
-            text-align: center;
-        }
-
-        .stat + .stat {
-            border-left: 1px solid rgba(230, 199, 132, 0.3);
-        }
-
-        .stat h3 {
-            color: var(--gold);
-            font-size: 35px;
-        }
-
-        .stat p {
-            color: var(--muted);
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        /* EXPERIENCE */
-
-        .timeline {
-            border-left: 1px solid var(--gold);
-            margin-left: 8px;
-            padding-left: 32px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 42px;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--gold);
-            left: -38px;
-            top: 8px;
-        }
-
-        .timeline-date {
-            color: var(--gold);
-            font-size: 12px;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .timeline-item h3 {
-            font-size: 27px;
-            margin-bottom: 7px;
-        }
-
-        .timeline-item p {
-            max-width: 760px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* PROJECT CARDS */
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border: 1px solid rgba(230, 199, 132, 0.2);
-            padding: 30px;
-            transition: transform 0.25s, border-color 0.25s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .project-number {
-            color: var(--gold);
-            font-family: var(--heading-font);
-            font-size: 30px;
-            margin-bottom: 18px;
-        }
-
-        .project-card h3 {
-            font-size: 27px;
-            margin-bottom: 12px;
-        }
-
-        .project-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 22px;
-        }
-
-        .tag {
-            border: 1px solid rgba(230, 199, 132, 0.35);
-            color: var(--gold);
-            padding: 5px 10px;
-            font-size: 11px;
-        }
-
-        /* SKILLS */
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill {
-            padding: 12px 18px;
-            border: 1px solid rgba(230, 199, 132, 0.4);
-            color: var(--ivory);
-            font-size: 13px;
-        }
-
-        .skill:hover {
-            background: var(--surface);
-            color: var(--gold);
-        }
-
-        /* CONTACT */
-
-        .contact-box {
-            padding: 55px 30px;
-            border: 1px solid var(--gold);
-            text-align: center;
-            position: relative;
-        }
-
-        .contact-box h2 {
-            max-width: 650px;
-            margin: 0 auto 20px;
-        }
-
-        .contact-box p {
-            color: var(--muted);
-            max-width: 540px;
-            margin: 0 auto 28px;
-        }
-
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid rgba(230, 199, 132, 0.25);
-            padding: 25px 0;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .footer-signature {
-            color: var(--gold);
-            font-family: var(--script-font);
-            font-size: 24px;
-        }
-
-        /* RESPONSIVE DESIGN */
-
-        @media (max-width: 850px) {
-            .header-inner {
-                flex-wrap: wrap;
-            }
-
-            #menu-toggle {
-                display: grid;
-            }
-
-            .navigation {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: min(320px, 85vw);
-                height: 100dvh;
-                background: var(--background);
-                border-left: 1px solid var(--gold);
-                padding: 90px 30px 30px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 26px;
-                z-index: 1100;
-            }
-
-            .navigation.open {
-                display: flex;
-            }
-
-            .navigation a {
-                font-family: var(--heading-font);
-                font-size: 25px;
-            }
-
-            #menu-close {
-                display: grid;
-                position: absolute;
-                top: 25px;
-                right: 25px;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 55px;
-            }
-
-            .hero {
-                padding-top: 75px;
-            }
-
-            .portrait-wrap {
-                justify-content: flex-start;
-            }
-
-            .royal-arch {
-                min-height: 340px;
-                width: 280px;
-            }
-
-            .section {
-                padding: 75px 0;
-            }
-        }
-
-        @media (max-width: 560px) {
-            .container {
-                width: calc(100% - 34px);
-            }
-
-            .header-inner {
-                padding: 12px 17px;
-            }
-
-            .logo {
-                font-size: 27px;
-            }
-
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .stat + .stat {
-                border-left: none;
-                border-top: 1px solid rgba(230, 199, 132, 0.3);
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .contact-box {
-                padding: 38px 20px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="background-magic" aria-hidden="true">
-        <div class="stars"></div>
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-    </div>
-
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-inner">
-            <a href="#home" class="logo">Your Girl, Neha</a>
-
-            <nav class="navigation" id="navigation" aria-label="Main navigation">
-                <button class="icon-button" id="menu-close" aria-label="Close menu">✕</button>
-                <a href="#home">Home</a>
-                <a href="#experience">My Journey</a>
-                <a href="#projects">My Work</a>
-                <a href="#skills">My Magic</a>
-                <a href="#contact">Say Hello</a>
-            </nav>
-
-            <div class="header-actions">
-                <button class="icon-button" id="theme-toggle" aria-label="Switch colour theme" title="Switch theme">☼</button>
-                <button class="icon-button" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navigation">☰</button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- HERO -->
-        <section class="hero" id="home">
-            <div class="container hero-grid">
-                <div>
-                    <p class="eyebrow">A little ambition, a little magic</p>
-
-                    <h1>
-                        Hello, I'm<br>
-                        <span>Neha Reddy.</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        A curious mind with a love for strategy, business,
-                        finance and analytics. I turn complex data into
-                        meaningful decisions — one little breakthrough at a time.
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="#projects" class="button button-primary">Explore My Work ↗</a>
-                        <a href="#contact" class="button button-secondary">Let's Connect</a>
-                    </div>
-
-                    <p class="hero-note">Dream big. Think deeply. Create impact.</p>
-                </div>
-
-                <div class="portrait-wrap">
-                    <div class="royal-arch">
-                        <div class="arch-content">
-                            <div class="crown" aria-hidden="true">✧</div>
-                            <p class="eyebrow">The story so far</p>
-                            <h2>Your next<br><span class="gold">chapter</span></h2>
-                            <p>Business · Finance · Analytics</p>
-                            <div class="arch-caption">written by Neha</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- QUICK HIGHLIGHTS -->
-        <section class="container">
-            <div class="stats">
-                <div class="stat">
-                    <h3>01</h3>
-                    <p>Strategy & Planning</p>
-                </div>
-                <div class="stat">
-                    <h3>02</h3>
-                    <p>Data & Analytics</p>
-                </div>
-                <div class="stat">
-                    <h3>03</h3>
-                    <p>Continuous Learning</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section class="section" id="about">
-            <div class="container">
-                <p class="eyebrow">Behind the fairytale</p>
-                <h2>A little about <span class="gold">me.</span></h2>
-
-                <p class="section-intro">
-                    I bring together analytical thinking and business understanding
-                    to solve problems, improve processes and help teams make
-                    better-informed decisions. I enjoy finding the story hidden
-                    inside the numbers and turning ideas into practical outcomes.
-                </p>
-
-                <div class="skills-list">
-                    <span class="skill">Business Strategy</span>
-                    <span class="skill">Financial Analysis</span>
-                    <span class="skill">Problem Solving</span>
-                    <span class="skill">Process Improvement</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section class="section" id="experience">
-            <div class="container">
-                <p class="eyebrow">Every chapter counts</p>
-                <h2>My <span class="gold">journey.</span></h2>
-
-                <p class="section-intro">
-                    A growing journey across business operations, strategic planning
-                    and data-driven problem solving.
-                </p>
-
-                <div class="timeline">
-                    <article class="timeline-item">
-                        <p class="timeline-date">PROFESSIONAL EXPERIENCE</p>
-                        <h3>Planning & Strategy</h3>
-                        <p>
-                            Worked on performance analysis, vendor cost optimisation,
-                            reporting dashboards and operational initiatives.
-                            Used data and structured analysis to support business decisions.
-                        </p>
-                    </article>
-
-                    <article class="timeline-item">
-                        <p class="timeline-date">EDUCATION</p>
-                        <h3>Business Meets Technology</h3>
-                        <p>
-                            My academic journey combines computer science with
-                            finance and business analytics, helping me approach
-                            business problems from both technical and commercial perspectives.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section class="section" id="projects">
-            <div class="container">
-                <p class="eyebrow">Little ideas, meaningful impact</p>
-                <h2>Things I've <span class="gold">created.</span></h2>
-
-                <p class="section-intro">
-                    A selection of projects and initiatives where analysis,
-                    technology and business thinking come together.
-                </p>
-
-                <div class="project-grid">
-                    <article class="project-card">
-                        <p class="project-number">01 / Analytics</p>
-                        <h3>Performance Rule Engine</h3>
-                        <p>
-                            Developed an Advanced Excel-based scoring framework
-                            to evaluate performance across 700+ personnel,
-                            supporting consistent, policy-aligned decisions.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Advanced Excel</span>
-                            <span class="tag">Rule Engine</span>
-                            <span class="tag">Analysis</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <p class="project-number">02 / Cost Optimisation</p>
-                        <h3>Vendor Pricing Analysis</h3>
-                        <p>
-                            Analysed historical vendor data using SQL and Excel,
-                            built demand projections and contributed to a
-                            21% reduction in vendor pricing.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">SQL</span>
-                            <span class="tag">Excel</span>
-                            <span class="tag">Forecasting</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <p class="project-number">03 / Data Science</p>
-                        <h3>ADR Prediction</h3>
-                        <p>
-                            Explored machine learning for adverse drug reaction
-                            prediction using chemical compound data and
-                            multi-label classification techniques.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Drug Safety</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <p class="project-number">04 / Visualisation</p>
-                        <h3>Business Dashboards</h3>
-                        <p>
-                            Built reporting solutions to help communicate KPIs,
-                            monitor business performance and support monthly
-                            and quarterly reviews.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">DAX</span>
-                            <span class="tag">Power Query</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section class="section" id="skills">
-            <div class="container">
-                <p class="eyebrow">My toolkit</p>
-                <h2>A touch of <span class="gold">logic.</span></h2>
-
-                <p class="section-intro">
-                    Tools and skills I use to turn questions into insights
-                    and insights into action.
-                </p>
-
-                <div class="skills-list">
-                    <span class="skill">SQL</span>
-                    <span class="skill">Advanced Excel</span>
-                    <span class="skill">Python</span>
-                    <span class="skill">Power BI</span>
-                    <span class="skill">DAX</span>
-                    <span class="skill">Power Query</span>
-                    <span class="skill">Data Visualisation</span>
-                    <span class="skill">Root Cause Analysis</span>
-                    <span class="skill">Process Mapping</span>
-                    <span class="skill">Forecasting</span>
-                    <span class="skill">Stakeholder Management</span>
-                    <span class="skill">Business Analysis</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="contact-box">
-                    <p class="eyebrow">Every great story starts somewhere</p>
-                    <h2>Shall we create something <span class="gold">meaningful?</span></h2>
-
-                    <p>
-                        I'm always open to meaningful conversations,
-                        new opportunities and ideas that make a difference.
-                    </p>
-
-                    <!-- Replace this email with your actual email address -->
-                    <a class="button button-primary"
-                       href="mailto:your.email@example.com">
-                        Write Me a Note ↗
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container footer-inner">
-            <p>© <span id="year"></span> Neha Reddy. Made with intention.</p>
-            <p class="footer-signature">And so the story continues...</p>
-        </div>
-    </footer>
-
-    <script>
-        // DARK / LIGHT THEME
-
-        const themeToggle = document.getElementById("theme-toggle");
-
-        themeToggle.addEventListener("click", function () {
-            document.body.classList.toggle("light-theme");
-
-            const isLight = document.body.classList.contains("light-theme");
-
-            themeToggle.textContent = isLight ? "☾" : "☼";
-            themeToggle.setAttribute(
-                "aria-label",
-                isLight ? "Switch to dark theme" : "Switch to light theme"
-            );
-
-            try {
-                localStorage.setItem("neha-theme", isLight ? "light" : "dark");
-            } catch (error) {
-                // Theme switching still works if browser storage is unavailable.
-            }
-        });
-
-        // RESTORE SAVED THEME
-
-        try {
-            const savedTheme = localStorage.getItem("neha-theme");
-
-            if (savedTheme === "light") {
-                document.body.classList.add("light-theme");
-                themeToggle.textContent = "☾";
-                themeToggle.setAttribute("aria-label", "Switch to dark theme");
-            }
-        } catch (error) {
-            // Continue with the default dark theme.
-        }
-
-        // MOBILE NAVIGATION
-
-        const menuToggle = document.getElementById("menu-toggle");
-        const menuClose = document.getElementById("menu-close");
-        const navigation = document.getElementById("navigation");
-
-        function closeMenu() {
-            navigation.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-        }
-
-        menuToggle.addEventListener("click", function () {
-            const isOpen = navigation.classList.toggle("open");
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
-        });
-
-        menuClose.addEventListener("click", closeMenu);
-
-        navigation.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", closeMenu);
-        });
-
-        // AUTOMATIC COPYRIGHT YEAR
-
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
-```
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Neha | Business, Finance &amp; Analytics</title>
+<meta name="description" content="Neha's professional journey, projects and achievements across business, finance, strategy and analytics." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ---------- TOKENS: NIGHT (default) ---------- */
+:root{
+  --sky:linear-gradient(180deg,#040820 0%,#0a1650 55%,#10236f 100%);
+  --bg:#050a26;
+  --surface:rgba(120,150,255,.10);
+  --solid:#0c1650;
+  --header-bg:rgba(5,10,38,.80);
+  --ink:#f4f6ff;
+  --muted:#b4c0f0;
+  --edge:rgba(130,160,255,.28);
+  --gold:#ffd45c;
+  --gold-ink:#ffd45c;
+  --blue:#6cc8ff;
+  --blue-ink:#8fd6ff;
+  --violet:#8b6cff;
+  --violet-ink:#b8a4ff;
+  --glow-g:rgba(255,212,92,.50);
+  --glow-b:rgba(108,200,255,.45);
+  --glow-v:rgba(139,108,255,.50);
+  --silh:#030619;
+  --on-gold:#1b1250;
+  --night:1;
+  --head:'Fredoka','Trebuchet MS',Arial,sans-serif;
+  --body:'Nunito','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+/* ---------- TOKENS: DAY ---------- */
+body.light-theme{
+  --sky:linear-gradient(180deg,#b9dcff 0%,#e3f1ff 60%,#f6faff 100%);
+  --bg:#e8f3ff;
+  --surface:rgba(255,255,255,.72);
+  --solid:#ffffff;
+  --header-bg:rgba(232,243,255,.88);
+  --ink:#0b1a5e;
+  --muted:#44559c;
+  --edge:rgba(30,60,170,.22);
+  --gold:#ffc02e;
+  --gold-ink:#8a5a00;
+  --blue:#2f9bff;
+  --blue-ink:#0b6fd0;
+  --violet:#6a4cf0;
+  --violet-ink:#4d32c9;
+  --glow-g:rgba(255,192,46,.55);
+  --glow-b:rgba(47,155,255,.35);
+  --glow-v:rgba(106,76,240,.30);
+  --silh:#14286f;
+  --night:0;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+::selection{background:var(--gold);color:var(--on-gold)}
+
+/* =========================================================
+   MOVING BACKGROUND (all layers fixed behind the page)
+========================================================= */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.sky{position:absolute;inset:0;background:var(--sky);transition:background .4s}
+.layer{position:absolute;inset:0;transition:opacity .5s}
+.night-only{opacity:var(--night)}
+
+/* twinkling stars (generated by JS) */
+.stars i{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;
+  opacity:.7;animation:twinkle var(--d,4s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.35)}}
+
+/* nebula glows */
+.neb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;opacity:.32}
+.n1{width:520px;height:520px;background:#3a2fd6;top:-10%;left:-8%;animation:drift1 26s ease-in-out infinite}
+.n2{width:480px;height:480px;background:#7b3fe0;top:35%;right:-12%;animation:drift2 30s ease-in-out infinite}
+.n3{width:440px;height:440px;background:#1f7be8;bottom:-14%;left:28%;animation:drift3 34s ease-in-out infinite}
+.n4{width:260px;height:260px;background:#ff8fd1;opacity:.14;bottom:10%;left:-4%;animation:drift2 38s ease-in-out infinite reverse}
+body.light-theme .neb{opacity:.16}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18vw,14vh) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-16vw,-12vh) scale(1.2)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-14vw,-16vh) scale(.9)}}
+
+/* crescent moon */
+.moon{position:absolute;top:13%;right:9%;width:84px;height:84px;border-radius:50%;
+  box-shadow:inset -24px 8px 0 0 #ffe9a8;filter:drop-shadow(0 0 22px var(--glow-g));
+  animation:moonBob 9s ease-in-out infinite}
+@keyframes moonBob{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-16px) rotate(4deg)}}
+
+/* drifting clouds */
+.cloud{position:absolute;left:-30vw;width:260px;height:64px;border-radius:64px;
+  background:rgba(150,175,255,.13);filter:blur(12px);animation:cloudMove linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
+.cloud::before{width:110px;height:90px;left:30px;top:-40px}
+.cloud::after{width:90px;height:70px;left:120px;top:-26px}
+.c1{top:18%;animation-duration:90s}
+.c2{top:46%;transform:scale(1.4);animation-duration:120s;animation-delay:-50s}
+.c3{top:70%;transform:scale(.9);animation-duration:100s;animation-delay:-20s}
+body.light-theme .cloud{background:rgba(255,255,255,.7)}
+@keyframes cloudMove{to{translate:150vw 0}}
+
+/* shooting stars */
+.shoot{position:absolute;right:-5%;width:140px;height:2px;border-radius:2px;opacity:0;
+  background:linear-gradient(90deg,#fff,rgba(255,255,255,0));filter:drop-shadow(0 0 6px #fff);
+  animation:shoot 9s linear infinite}
+.sh1{top:12%;animation-delay:1s}
+.sh2{top:30%;animation-delay:4.5s;animation-duration:11s}
+.sh3{top:6%;animation-delay:7s;animation-duration:13s}
+@keyframes shoot{
+  0%{transform:rotate(-20deg) translateX(0);opacity:0}
+  3%{opacity:1}
+  14%{transform:rotate(-20deg) translateX(-95vw);opacity:0}
+  100%{transform:rotate(-20deg) translateX(-95vw);opacity:0}
+}
+
+/* rising pixie-dust sparkles (generated by JS) */
+.sparks i{position:absolute;bottom:-30px;background:var(--c,#ffd45c);
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
+  filter:drop-shadow(0 0 6px var(--c,#ffd45c));opacity:0;
+  animation:rise var(--t,18s) linear infinite}
+@keyframes rise{
+  0%{transform:translate(0,0) rotate(0);opacity:0}
+  10%{opacity:.95}
+  50%{transform:translate(var(--x,30px),-55vh) rotate(180deg)}
+  90%{opacity:.8}
+  100%{transform:translate(calc(var(--x,30px) * -1),-112vh) rotate(360deg);opacity:0}
+}
+
+/* fireworks (generated by JS) */
+.fw{position:absolute;width:0;height:0}
+.fw i{position:absolute;left:0;top:0;width:5px;height:5px;border-radius:50%;
+  background:var(--c);box-shadow:0 0 10px var(--c);animation:fwOut 1.6s ease-out forwards}
+@keyframes fwOut{
+  0%{transform:translate(0,0) scale(1);opacity:1}
+  75%{opacity:1}
+  100%{transform:translate(var(--dx),calc(var(--dy) + 34px)) scale(.3);opacity:0}
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;
+  padding:14px 6%;background:var(--header-bg);border-bottom:1px solid var(--edge);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{order:1;font-family:var(--head);font-weight:700;font-size:1.7rem;line-height:1;
+  color:var(--gold-ink);text-shadow:0 0 22px var(--glow-g)}
+.logo::before{content:"✦ ";font-size:1.1rem;vertical-align:.2em}
+.navigation{order:2;margin-inline:auto;display:flex;align-items:center;gap:6px}
+.navigation>a{padding:8px 16px;border-radius:999px;font-weight:700;font-size:1rem;transition:background .2s,box-shadow .2s,color .2s}
+.navigation>a:hover{background:var(--surface);color:var(--gold-ink);box-shadow:0 0 18px var(--glow-g)}
+.header-actions{order:3;display:flex;gap:10px;align-items:center}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--edge);background:var(--surface);
+  display:grid;place-items:center;font-size:1.2rem;line-height:1;transition:transform .2s,box-shadow .2s,border-color .2s}
+.icon-btn:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 0 20px var(--glow-g)}
+.sun-icon,.moon-icon{grid-area:1/1}
+.sun-icon{display:none}
+body.light-theme .sun-icon{display:inline}
+body.light-theme .moon-icon{display:none}
+#menu-close{display:none}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border:1px solid var(--edge);
+  border-radius:999px;font-weight:800;background:var(--surface);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:transform .2s,box-shadow .25s,border-color .25s}
+.btn:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 0 26px var(--glow-g)}
+.btn-primary{background:linear-gradient(135deg,var(--gold),#ffe9a0);color:var(--on-gold);border-color:transparent;
+  animation:glowPulse 2.8s ease-in-out infinite}
+.btn-primary:hover{box-shadow:0 0 38px var(--glow-g);border-color:transparent}
+.btn-sm{padding:10px 20px;font-size:.95rem}
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 0 14px var(--glow-g)}
+  50%{box-shadow:0 0 34px var(--glow-g),0 0 6px var(--glow-g)}
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+main{overflow-x:clip}
+.wrap{width:min(1120px,100%);margin-inline:auto;padding-inline:6%}
+.section{padding-top:110px}
+.pill{display:inline-block;color:var(--blue-ink);font-weight:800;font-size:1rem;margin-bottom:16px}
+.pill::before{content:"✦ ";color:var(--gold-ink)}
+.section h2{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;margin-bottom:14px}
+.lead{color:var(--muted);font-size:1.12rem;max-width:620px;margin-bottom:44px}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
+  min-height:calc(100svh - 72px);padding:64px 6% 0}
+.hero-text{max-width:860px;animation:rise2 .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .pill{margin-bottom:18px}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5rem);font-weight:700;line-height:1.05;margin-bottom:20px;
+  text-shadow:0 0 44px var(--glow-v)}
+.intro{color:var(--muted);font-size:clamp(1.08rem,2vw,1.3rem);max-width:560px;margin:0 auto 30px}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.tag{padding:7px 16px;border:1px solid var(--edge);border-radius:999px;background:var(--solid);
+  font-weight:800;font-size:.88rem;animation:bob 5s ease-in-out infinite}
+.tag:nth-child(1){color:var(--blue-ink);box-shadow:0 0 18px var(--glow-b)}
+.tag:nth-child(2){color:var(--gold-ink);box-shadow:0 0 18px var(--glow-g);animation-delay:-1.6s}
+.tag:nth-child(3){color:var(--violet-ink);box-shadow:0 0 18px var(--glow-v);animation-delay:-3.2s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes rise2{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* Charminar scene */
+.scene{position:relative;width:min(760px,100%);margin-top:auto;padding-top:34px}
+.scene::after{content:"";position:absolute;left:8%;right:8%;bottom:-2px;height:60px;
+  background:radial-gradient(ellipse at center bottom,var(--glow-g),transparent 70%);filter:blur(6px)}
+.arc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.arc .trail{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-dasharray:2 14;
+  vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px var(--glow-g));
+  animation:dashMove 2.2s linear infinite}
+.arc .spark{fill:#fff;filter:drop-shadow(0 0 10px var(--gold)) drop-shadow(0 0 4px #fff)}
+@keyframes dashMove{to{stroke-dashoffset:-32}}
+.charminar{position:relative;display:block;width:min(500px,74%);margin:0 auto;
+  filter:drop-shadow(0 0 14px var(--glow-g))}
+.sil{fill:var(--silh)}
+.win{fill:var(--gold);animation:flicker 4s ease-in-out infinite}
+.win:nth-of-type(2n){animation-delay:-1.3s}
+.win:nth-of-type(3n){animation-delay:-2.6s}
+.door{fill:url(#lit)}
+@keyframes flicker{0%,100%{opacity:.75}45%{opacity:1}60%{opacity:.6}}
+
+/* =========================================================
+   STATS
+========================================================= */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);
+  border:1px solid var(--edge);border-radius:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.stat{padding:26px 28px;border-right:1px solid var(--edge)}
+.stat:last-child{border-right:0}
+.stat strong{display:block;font-family:var(--head);font-size:1.9rem;font-weight:700;line-height:1.15;color:var(--blue-ink)}
+.stat:nth-child(2) strong{color:var(--gold-ink)}
+.stat:nth-child(3) strong{color:var(--violet-ink)}
+.stat span{color:var(--muted);font-weight:700;font-size:.95rem}
+
+/* =========================================================
+   CARDS / JOURNEY
+========================================================= */
+.t-item,.m-card{background:var(--surface);border:1px solid var(--edge);border-radius:24px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .3s,box-shadow .3s,border-color .3s}
+.t-item:hover,.m-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 0 34px var(--glow-g)}
+
+.timeline{position:relative;display:grid;gap:18px;padding-left:38px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(var(--gold),var(--blue),var(--violet));box-shadow:0 0 12px var(--glow-g)}
+.t-item{position:relative;display:grid;grid-templat
