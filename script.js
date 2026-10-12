@@ -1,135 +1,93 @@
 
-/* =========================================
-   YOUR GIRL, NEHA — PORTFOLIO INTERACTIONS
-   ========================================= */
+/* ========================================
+   1. SELECT HTML ELEMENTS
+======================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const html = document.documentElement;
+const themeToggle = document.getElementById("theme-toggle");
+const menuToggle = document.getElementById("menu-toggle");
+const menuClose = document.getElementById("menu-close");
+const navigation = document.getElementById("navigation");
 
-  // Find the theme toggle button.
-  const themeButton = document.querySelector(
-    "#theme-toggle, #themeToggle, .theme-toggle, [data-theme-toggle]"
+
+/* ========================================
+   2. DARK / LIGHT THEME TOGGLE
+======================================== */
+
+themeToggle.addEventListener("click", function () {
+  document.body.classList.toggle("dark-theme");
+
+  const isDark = document.body.classList.contains("dark-theme");
+
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light theme" : "Switch to dark theme"
   );
+});
 
-  // Find the menu button.
-  const menuButton = document.querySelector(
-    "#menu-toggle, #menuToggle, .menu-toggle, [data-menu-toggle]"
-  );
 
-  // Find the navigation menu.
-  const navigation = document.querySelector(
-    "#site-nav, #main-nav, #nav-menu, .site-nav, .main-nav, [data-site-nav]"
-  );
+/* ========================================
+   3. OPEN THE SIDE MENU
+======================================== */
 
-  // ---------- Light and dark theme ----------
+function openMenu() {
+  navigation.classList.add("is-open");
 
-  function applyTheme(theme) {
-    const isDark = theme === "dark";
+  menuToggle.setAttribute("aria-expanded", "true");
+  menuToggle.setAttribute("aria-label", "Close navigation menu");
 
-    html.setAttribute("data-theme", isDark ? "dark" : "light");
+  document.body.classList.add("menu-open");
 
-    if (themeButton) {
-      themeButton.textContent = isDark ? "☀️" : "🌙";
-      themeButton.setAttribute(
-        "aria-label",
-        isDark ? "Switch to light theme" : "Switch to dark theme"
-      );
-      themeButton.setAttribute("title", isDark ? "Light mode" : "Dark mode");
-      themeButton.setAttribute("aria-pressed", String(isDark));
-    }
+  menuClose.focus();
+}
 
-    try {
-      localStorage.setItem("neha-portfolio-theme", isDark ? "dark" : "light");
-    } catch (error) {
-      // The theme still works if browser storage is unavailable.
-    }
+menuToggle.addEventListener("click", function () {
+  if (navigation.classList.contains("is-open")) {
+    closeMenu();
+  } else {
+    openMenu();
   }
+});
 
-  let savedTheme = null;
 
-  try {
-    savedTheme = localStorage.getItem("neha-portfolio-theme");
-  } catch (error) {
-    // Continue with the default theme.
-  }
+/* ========================================
+   4. CLOSE THE SIDE MENU
+======================================== */
 
-  const initialTheme =
-    savedTheme === "light" || savedTheme === "dark"
-      ? savedTheme
-      : "dark";
+function closeMenu() {
+  navigation.classList.remove("is-open");
 
-  applyTheme(initialTheme);
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-  if (themeButton) {
-    themeButton.addEventListener("click", () => {
-      const currentTheme = html.getAttribute("data-theme") || "dark";
-      applyTheme(currentTheme === "dark" ? "light" : "dark");
-    });
-  }
+  document.body.classList.remove("menu-open");
+}
 
-  // ---------- Hamburger navigation ----------
+menuClose.addEventListener("click", closeMenu);
 
-  function setMenuOpen(open) {
-    if (!navigation || !menuButton) return;
 
-    navigation.classList.toggle("open", open);
-    navigation.classList.toggle("is-open", open);
+/* ========================================
+   5. CLOSE MENU AFTER CLICKING A LINK
+======================================== */
 
-    menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute(
-      "aria-label",
-      open ? "Close navigation menu" : "Open navigation menu"
-    );
-  }
+const navigationLinks = navigation.querySelectorAll("a");
 
-  if (menuButton && navigation) {
-    menuButton.addEventListener("click", (event) => {
-      event.stopPropagation();
+navigationLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    closeMenu();
+  });
+});
 
-      const isOpen =
-        navigation.classList.contains("open") ||
-        navigation.classList.contains("is-open");
 
-      setMenuOpen(!isOpen);
-    });
+/* ========================================
+   6. CLOSE MENU WITH ESCAPE KEY
+======================================== */
 
-    // Close the menu after selecting a navigation link.
-    navigation.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        setMenuOpen(false);
-      });
-    });
-
-    // Close the menu when clicking outside it.
-    document.addEventListener("click", (event) => {
-      if (
-        !navigation.contains(event.target) &&
-        !menuButton.contains(event.target)
-      ) {
-        setMenuOpen(false);
-      }
-    });
-
-    // Close the menu using the Escape key.
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-      }
-    });
-
-    // Close the mobile menu if the screen becomes wider.
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 800) {
-        setMenuOpen(false);
-      }
-    });
-  }
-
-  // ---------- Current year in footer ----------
-
-  const yearElement = document.querySelector("#current-year");
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "Escape" &&
+    navigation.classList.contains("is-open")
+  ) {
+    closeMenu();
+    menuToggle.focus();
   }
 });
