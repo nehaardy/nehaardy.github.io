@@ -207,48 +207,27 @@ main{overflow-x:clip}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* portrait */
-.portrait{position:relative;width:min(400px,86%);aspect-ratio:4/5;margin-inline:auto;
-  --rx:0deg;--ry:0deg;perspective:900px}
-.aura{position:absolute;inset:-12%;border-radius:50%;
-  background:radial-gradient(circle,var(--glow-g),var(--glow-v) 45%,transparent 70%);
-  filter:blur(40px);opacity:.55;animation:auraPulse 6s ease-in-out infinite}
-@keyframes auraPulse{0%,100%{transform:scale(.92);opacity:.4}50%{transform:scale(1.08);opacity:.7}}
 
-.orbit{position:absolute;border-radius:50%;pointer-events:none}
-.o1{inset:-9% -12%;border:1.5px dashed var(--edge);animation:spin 40s linear infinite}
-.o2{inset:-18% -22%;border:1px solid var(--edge);animation:spin 60s linear infinite reverse}
-.orbit i{position:absolute;width:14px;height:14px;background:var(--gold);
-  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
-  filter:drop-shadow(0 0 6px var(--gold))}
-.orbit i:nth-child(1){top:-7px;left:calc(50% - 7px)}
-.orbit i:nth-child(2){bottom:-7px;left:calc(50% - 7px);background:var(--blue);filter:drop-shadow(0 0 6px var(--blue))}
-.orbit i:nth-child(3){top:calc(50% - 7px);left:-7px;background:var(--violet);filter:drop-shadow(0 0 6px var(--violet))}
-.orbit i:nth-child(4){top:calc(50% - 7px);right:-7px}
+<div class="portrait" id="portrait">
+  <div class="aura"></div>
+  <div class="orbit o2"><i></i><i></i><i></i><i></i></div>
+  <div class="orbit o1"><i></i><i></i><i></i><i></i></div>
 
-.frame{position:absolute;inset:0;margin:0;overflow:hidden;
-  border-radius:999px 999px 30px 30px;border:3px solid var(--gold);
-  box-shadow:0 0 0 8px rgba(255,212,92,.10),0 0 46px var(--glow-g),0 0 90px var(--glow-v);
-  transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out;
-  animation:frameGlow 5s ease-in-out infinite}
-@keyframes frameGlow{
-  0%,100%{box-shadow:0 0 0 8px rgba(255,212,92,.10),0 0 40px var(--glow-g),0 0 80px var(--glow-v)}
-  50%{box-shadow:0 0 0 12px rgba(255,212,92,.16),0 0 62px var(--glow-g),0 0 110px var(--glow-v)}
-}
-.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;
-  animation:kenburns 14s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1.5%)}}
-.shine{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.28) 50%,transparent 62%);
-  transform:translateX(-130%);animation:sheen 6.5s ease-in-out infinite}
+  <figure class="frame">
+    <img
+      src="file:///C:/Users/LEGION/Downloads/img.png"
+      alt="Portrait of Neha"
+      width="720"
+      height="900"
+    />
+    <span class="shine"></span>
+  </figure>
 
-.chip{position:absolute;z-index:3;padding:8px 16px;border:1px solid var(--edge);border-radius:999px;
-  background:var(--solid);font-weight:800;font-size:.88rem;white-space:nowrap;
-  animation:bob 5s ease-in-out infinite}
-.chip-a{top:6%;left:-12%;color:var(--blue-ink);box-shadow:0 0 20px var(--glow-b)}
-.chip-b{top:42%;right:-14%;color:var(--gold-ink);box-shadow:0 0 20px var(--glow-g);animation-delay:-1.6s}
-.chip-c{bottom:16%;left:-14%;color:var(--violet-ink);box-shadow:0 0 20px var(--glow-v);animation-delay:-3.2s}
-.chip-d{bottom:2%;right:-6%;color:var(--on-gold);background:linear-gradient(135deg,var(--gold),#ffe9a0);
-  border-color:transparent;box-shadow:0 0 24px var(--glow-g);animation-delay:-2.4s}
+  <span class="chip chip-a">Data &amp; Analytics</span>
+  <span class="chip .chip-b">Business &amp; Strategy</span>
+  <span class="chip chip-c">Finance</span>
+  <span class="chip chip-d">STEM</span>
+</div>
 
 /* =========================================================
    STATS
