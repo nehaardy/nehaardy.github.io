@@ -24,6 +24,8 @@
   --blue-ink:#86d3ff;
   --violet:#8b6cff;
   --violet-ink:#b8a4ff;
+  --purple-ink:#d9a3ff;
+  --indigo-ink:#9fb0ff;
   --glow-g:rgba(255,212,92,.50);
   --glow-b:rgba(95,194,255,.45);
   --glow-v:rgba(139,108,255,.50);
@@ -51,6 +53,8 @@ body.light-theme{
   --blue-ink:#0b6fd0;
   --violet:#6a4cf0;
   --violet-ink:#4d32c9;
+  --purple-ink:#8a2fc9;
+  --indigo-ink:#3a45c9;
   --glow-g:rgba(255,192,46,.55);
   --glow-b:rgba(47,155,255,.35);
   --glow-v:rgba(106,76,240,.30);
@@ -80,12 +84,12 @@ h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
 .stars i{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;
   opacity:.7;animation:twinkle var(--d,4s) ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.35)}}
- 
+
 .neb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;opacity:.26}
 .n1{width:520px;height:520px;background:#2a22c4;top:-10%;left:-8%;animation:drift1 26s ease-in-out infinite}
 .n2{width:480px;height:480px;background:#5a2cc8;top:35%;right:-12%;animation:drift2 30s ease-in-out infinite}
 .n3{width:440px;height:440px;background:#1560d0;bottom:-14%;left:28%;animation:drift3 34s ease-in-out infinite}
-.n4{width:260px;height:260px;background: #ff8fd1;opacity:.10;bottom:10%;left:-4%;animation:drift2 38s ease-in-out infinite reverse}
+.n4{width:260px;height:260px;background:#ff8fd1;opacity:.10;bottom:10%;left:-4%;animation:drift2 38s ease-in-out infinite reverse}
 body.light-theme .neb{opacity:.16}
 @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18vw,14vh) scale(1.15)}}
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-16vw,-12vh) scale(1.2)}}
@@ -166,7 +170,7 @@ body.light-theme .moon-icon{display:none}
 /* =========================================================
    BUTTONS
 ========================================================= */
-.btn{display:inline-flex;align-items:left;gap:8px;padding:13px 26px;border:1px solid var(--edge);
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border:1px solid var(--edge);
   border-radius:999px;font-weight:800;background:var(--surface);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   transition:transform .2s,box-shadow .25s,border-color .25s}
@@ -192,7 +196,7 @@ main{overflow-x:clip}
 .lead{color:var(--muted);font-size:1.12rem;max-width:620px;margin-bottom:44px}
 
 /* =========================================================
-   HERO (text + animated portrait)
+   HERO (text + portrait with orbits only)
 ========================================================= */
 .hero{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
   width:min(1120px,100%);margin-inline:auto;min-height:calc(100svh - 72px);padding:56px 6% 40px}
@@ -225,21 +229,10 @@ main{overflow-x:clip}
 .orbit i:nth-child(3){top:calc(50% - 7px);left:-7px;background:var(--violet);filter:drop-shadow(0 0 6px var(--violet))}
 .orbit i:nth-child(4){top:calc(50% - 7px);right:-7px;background:var(--purple-ink);filter:drop-shadow(0 0 6px var(--purple-ink))}
 
-.frame{position:absolute;inset:0;margin:0;overflow:hidden;
-  border-radius:999px 999px 30px 30px;border:3px solid var(--gold);
-  box-shadow:0 0 0 8px rgba(255,212,92,.10),0 0 46px var(--glow-g),0 0 90px var(--glow-v);
-  transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out;
-  animation:frameGlow 5s ease-in-out infinite}
-@keyframes frameGlow{
-  0%,100%{box-shadow:0 0 0 8px rgba(255,212,92,.10),0 0 40px var(--glow-g),0 0 80px var(--glow-v)}
-  50%{box-shadow:0 0 0 12px rgba(255,212,92,.16),0 0 62px var(--glow-g),0 0 110px var(--glow-v)}
-}
-.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;
-  animation:kenburns 14s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07) translateY(-1.5%)}}
-.shine{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.28) 50%,transparent 62%);
-  transform:translateX(-130%);animation:sheen 6.5s ease-in-out infinite}
+/* photo: no frame, no border, no glow box */
+.portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;
+  display:block;border:0;
+  transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out}
 
 .chip{position:absolute;z-index:3;padding:8px 16px;border:1px solid var(--edge);border-radius:999px;
   background:var(--solid);font-weight:800;font-size:.88rem;white-space:nowrap;
@@ -253,7 +246,7 @@ main{overflow-x:clip}
 /* =========================================================
    STATS
 ========================================================= */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);
+.stats{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);
   border:1px solid var(--edge);border-radius:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .stat{padding:26px 28px;border-right:1px solid var(--edge)}
 .stat:last-child{border-right:0}
@@ -284,7 +277,7 @@ main{overflow-x:clip}
 .company{color:var(--blue-ink);font-weight:800;margin-bottom:10px}
 
 /* =========================================================
-   SHOWCASE (animated illustrations instead of plain boxes)
+   SHOWCASE
 ========================================================= */
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:72px}
 .feature:last-child{margin-bottom:0}
@@ -448,6 +441,8 @@ main{overflow-x:clip}
   .t-item{grid-template-columns:1fr;gap:14px}
   .section{padding-top:84px}
   .moon{width:60px;height:60px;box-shadow:inset -17px 6px 0 0 #ffe9a8}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat{border-bottom:1px solid var(--edge)}
 }
 @media (min-width:901px){#menu-toggle{display:none}}
 @media (max-width:600px){
@@ -492,7 +487,6 @@ main{overflow-x:clip}
     <a href="#Showcase">Showcase</a>
     <a href="#Milestones">Milestones</a>
     <a href="#Connect">Connect</a>
-  
   </nav>
 
   <div class="header-actions">
@@ -512,19 +506,18 @@ main{overflow-x:clip}
       <h1>Know a little more about your girl, Neha.</h1>
       <p class="intro">Hey, I’m Neha! 👋 A STEM professional with a business brain, an analytics obsession, and approximately 1,200 tabs open in my life. I connect the dots between finance, data, and strategy — one spreadsheet, big idea, and side quest at a time. 🚀</p>
       <div class="cta-row">
-         <a href="Resume" class="btn btn-primary btn-sm">
-  <i class="fa-solid fa-download"></i> Download Resume
-</a>
-          </div>
+        <a href="resume.pdf" download class="btn btn-primary btn-sm">⬇ Download Resume</a>
+      </div>
     </div>
 
     <div class="portrait" id="portrait">
-  <div class="aura"></div>
-  <div class="orbit o2"><i></i><i></i><i></i><i></i></div>
-  <div class="orbit o1"><i></i><i></i><i></i><i></i></div>
-  <img src="C:\Users\LEGION\Downloads\img.png" alt="Portrait of Neha" class="profile-image">
-  
-  <span class="chip chip-a">Data &amp; Analytics</span>
+      <div class="aura"></div>
+      <div class="orbit o2"><i></i><i></i><i></i><i></i></div>
+      <div class="orbit o1"><i></i><i></i><i></i><i></i></div>
+
+      <img src="img.png" alt="Portrait of Neha" class="portrait-img">
+
+      <span class="chip chip-a">Data &amp; Analytics</span>
       <span class="chip chip-b">Business &amp; Strategy</span>
       <span class="chip chip-c">Finance</span>
       <span class="chip chip-d">STEM</span>
@@ -575,8 +568,7 @@ main{overflow-x:clip}
           <p>Worked in the marketing department, supporting campaign execution and data analysis.</p>
         </div>
       </article>
-
- </div>
+    </div>
   </section>
 
   <!-- SHOWCASE -->
@@ -725,12 +717,12 @@ main{overflow-x:clip}
 
       <div class="socials">
 
-        <a class="social s-mail" href="nehardy@zohomail.in">
+        <a class="social s-mail" href="mailto:nehardy@zohomail.in">
           <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></span>
           Email
         </a>
 
-        <a class="social s-insta" href="https://www.instagram.com/your-username/" target="_blank" rel="noopener noreferrer">
+        <a class="social s-insta" href="https://www.instagram.com/nehah.rdy/" target="_blank" rel="noopener noreferrer">
           <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
           Instagram
         </a>
@@ -767,7 +759,7 @@ main{overflow-x:clip}
 </footer>
 
 <!-- Floating WhatsApp button -->
-<a class="wa-float" href="https://wa.me/9398388043" target="_blank" rel="noopener noreferrer" aria-label="Message me on WhatsApp">
+<a class="wa-float" href="https://wa.me/919398388043" target="_blank" rel="noopener noreferrer" aria-label="Message me on WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M3 21l1.65-4.8A9 9 0 1 1 8 19.4L3 21z"/><g transform="translate(6 5.7) scale(.5)"><path stroke-width="3" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></svg>
 </a>
 
