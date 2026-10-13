@@ -230,7 +230,7 @@ main{overflow-x:clip}
 .orbit i:nth-child(3){top:calc(50% - 7px);left:-7px;background:var(--violet);filter:drop-shadow(0 0 6px var(--violet))}
 .orbit i:nth-child(4){top:calc(50% - 7px);right:-7px;background:var(--purple-ink);filter:drop-shadow(0 0 6px var(--purple-ink))}
 
-/* photo: no frame */
+/* photo with glow */
 .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;
   display:block;border:0;border-radius:28px;
   box-shadow:0 0 30px var(--glow-g),0 0 70px var(--glow-v);
@@ -241,6 +241,7 @@ main{overflow-x:clip}
   0%,100%{box-shadow:0 0 30px var(--glow-g),0 0 70px var(--glow-v)}
   50%{box-shadow:0 0 50px var(--glow-g),0 0 110px var(--glow-v)}
 }
+
 .chip{position:absolute;z-index:3;padding:8px 16px;border:1px solid var(--edge);border-radius:999px;
   background:var(--solid);font-weight:800;font-size:.88rem;white-space:nowrap;
   animation:bob 5s ease-in-out infinite}
@@ -414,6 +415,18 @@ main{overflow-x:clip}
 }
 
 /* =========================================================
+   PASSCODE POPUP
+========================================================= */
+.modal{position:fixed;inset:0;z-index:500;display:grid;place-items:center;padding:20px;background:rgba(1,3,15,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.modal[hidden]{display:none}
+.modal-card{position:relative;width:min(400px,100%);padding:32px 28px;background:var(--solid);border:1px solid var(--edge);border-radius:24px;box-shadow:0 0 50px var(--glow-v)}
+.modal-card h3{font-size:1.6rem;margin-bottom:8px}
+.modal-card p{color:var(--muted);margin-bottom:16px}
+.modal-card input{width:100%;padding:12px 16px;margin-bottom:10px;border-radius:999px;border:1px solid var(--edge);background:var(--surface);color:var(--ink);font:inherit}
+.modal-x{position:absolute;top:12px;right:12px;width:36px;height:36px}
+.modal-card .rm-msg{min-height:1.4em;margin-bottom:12px;color:#ff8f8f;font-weight:700;font-size:.92rem}
+
+/* =========================================================
    FOOTER
 ========================================================= */
 .footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:100px;padding:26px 6%;
@@ -516,7 +529,7 @@ main{overflow-x:clip}
       <h1>Know a little more about your girl, Neha.</h1>
       <p class="intro">Hey, I&rsquo;m Neha! &#128075; A STEM professional with a business brain, an analytics obsession, and approximately 1,200 tabs open in my life. I connect the dots between finance, data, and strategy &mdash; one spreadsheet, big idea, and side quest at a time. &#128640;</p>
       <div class="cta-row">
-        <a href="resume.pdf" download class="btn btn-primary btn-sm">&#11015; Download Resume</a>
+        <button type="button" class="btn btn-primary btn-sm" id="resume-btn">&#11015; Download Resume</button>
       </div>
     </div>
 
@@ -773,6 +786,18 @@ main{overflow-x:clip}
   <svg viewBox="0 0 24 24"><path d="M3 21l1.65-4.8A9 9 0 1 1 8 19.4L3 21z"/><g transform="translate(6 5.7) scale(.5)"><path stroke-width="3" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></svg>
 </a>
 
+<!-- Passcode popup for resume -->
+<div class="modal" id="resume-modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="rm-title">
+    <button type="button" class="icon-btn modal-x" id="rm-close" aria-label="Close">&times;</button>
+    <h3 id="rm-title">Enter passcode</h3>
+    <p>Enter the passcode to download my resume.</p>
+    <input type="password" id="rm-pass" placeholder="Passcode" autocomplete="off">
+    <p class="rm-msg" id="rm-msg" role="alert"></p>
+    <button type="button" class="btn btn-primary btn-sm" id="rm-go">Download</button>
+  </div>
+</div>
+
 <script>
 const themeToggle = document.getElementById("theme-toggle");
 const menuToggle = document.getElementById("menu-toggle");
@@ -896,6 +921,45 @@ document.addEventListener("keydown", function (e) {
   p.addEventListener("pointerleave", function () {
     p.style.setProperty("--ry", "0deg");
     p.style.setProperty("--rx", "0deg");
+  });
+})();
+
+/* RESUME: passcode-protected download */
+(function () {
+  const btn = document.getElementById("resume-btn");
+  const modal = document.getElementById("resume-modal");
+  const pass = document.getElementById("rm-pass");
+  const msg = document.getElementById("rm-msg");
+  const go = document.getElementById("rm-go");
+  function openBox() { modal.hidden = false; msg.textContent = ""; pass.value = ""; pass.focus(); }
+  function closeBox() { modal.hidden = true; btn.focus(); }
+  btn.addEventListener("click", openBox);
+  document.getElementById("rm-close").addEventListener("click", closeBox);
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeBox(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeBox(); });
+  pass.addEventListener("keydown", function (e) { if (e.key === "Enter") go.click(); });
+
+  go.addEventListener("click", async function () {
+    if (!pass.value) { msg.textContent = "Please enter the passcode."; return; }
+    msg.textContent = "Checking...";
+    try {
+      const res = await fetch("resume.enc");
+      if (!res.ok) throw new Error("missing");
+      const buf = new Uint8Array(await res.arrayBuffer());
+      const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass.value), "PBKDF2", false, ["deriveKey"]);
+      const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: buf.slice(0, 16), iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+      let plain;
+      try {
+        plain = new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.slice(16, 28) }, key, buf.slice(28)));
+      } catch (err) { msg.textContent = "Wrong passcode. Try again."; return; }
+      const n = (plain[0] << 8) | plain[1];
+      const name = new TextDecoder().decode(plain.slice(2, 2 + n));
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([plain.slice(2 + n)]));
+      a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      closeBox();
+    } catch (err) { msg.textContent = "Could not load the resume file. Try again later."; }
   });
 })();
 </script>
