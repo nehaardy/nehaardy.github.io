@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Encrypt resume</title></head>
+<body style="font-family:Arial;max-width:480px;margin:40px auto">
+<h2>Encrypt resume</h2>
+<input type="file" id="f"><br><br>
+<input type="text" id="p" placeholder="Passcode"><br><br>
+<button id="go">Encrypt &amp; download resume.enc</button>
+<p id="m"></p>
+<script>
+document.getElementById("go").onclick = async function () {
+  const f = document.getElementById("f").files[0];
+  const pass = document.getElementById("p").value;
+  const m = document.getElementById("m");
+  if (!f || !pass) { m.textContent = "Choose a file and enter a passcode."; return; }
+  const enc = new TextEncoder();
+  const name = enc.encode(f.name);
+  const data = new Uint8Array(await f.arrayBuffer());
+  const plain = new Uint8Array(2 + name.length + data.length);
+  plain[0] = name.length >> 8; plain[1] = name.length & 255;
+  plain.set(name, 2); plain.set(data, 2 + name.length);
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const km = await crypto.subtle.importKey("raw", enc.encode(pass), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: salt, iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["encrypt"]);
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, plain));
+  const out = new Uint8Array(28 + ct.length);
+  out.set(salt, 0); out.set(iv, 16); out.set(ct, 28);
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([out]));
+  a.download = "resume.enc";
+  a.click();
+  m.textContent = "Done. Copy resume.enc into your website folder.";
+};
+</script>
+</body>
+</html>
