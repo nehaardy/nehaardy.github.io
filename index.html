@@ -256,9 +256,8 @@ main{overflow-x:clip}
 ========================================================= */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);
   border:1px solid var(--edge);border-radius:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.stat{padding:24px 16px;text-align:center;border-right:1px solid var(--edge);border-bottom:1px solid var(--edge)}
-.stat:nth-child(3n){border-right:0}
-.stat:nth-last-child(-n+3){border-bottom:0}
+.stat{padding:24px 16px;text-align:center;border-right:1px solid var(--edge)}
+.stat:last-child{border-right:0}
 .stat strong{display:block;font-family:var(--head);font-size:clamp(1.25rem,2.2vw,1.9rem);font-weight:700;line-height:1.15;color:var(--blue-ink)}
 .stat:nth-child(2) strong{color:var(--gold-ink)}
 .stat:nth-child(3) strong{color:var(--violet-ink)}
