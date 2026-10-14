@@ -10,8 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
 <style>
-/* ---------- TOKENS: DEEP NIGHT (default) ---------- */
+/* =====================================================================
+   ===================== CSS STARTS HERE ===============================
+   ===================================================================== */
+
+/* ---------- CSS: TOKENS, DEEP NIGHT (default) ---------- */
 :root{
   --sky:linear-gradient(180deg,#01030f 0%,#030828 50%,#06124a 100%);
   --bg:#02051a;
@@ -39,7 +44,7 @@
   --body:'Nunito','Helvetica Neue',Arial,sans-serif;
   color-scheme:dark;
 }
-/* ---------- TOKENS: DAY ---------- */
+/* ---------- CSS: TOKENS, DAY ---------- */
 body.light-theme{
   --sky:linear-gradient(180deg,#b9dcff 0%,#e3f1ff 60%,#f6faff 100%);
   --bg:#e8f3ff;
@@ -70,13 +75,11 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;transition:background .4s,color .4s}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer}
-h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.1;letter-spacing:-.01em}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
 ::selection{background:var(--gold);color:var(--on-gold)}
 
-/* =========================================================
-   MOVING BACKGROUND
-========================================================= */
+/* ---------- CSS: MOVING BACKGROUND ---------- */
 .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .sky{position:absolute;inset:0;background:var(--sky);transition:background .4s}
 .layer{position:absolute;inset:0;transition:opacity .5s}
@@ -146,9 +149,7 @@ body.light-theme .cloud{background:rgba(255,255,255,.7)}
   100%{transform:translate(var(--dx),calc(var(--dy) + 34px)) scale(.3);opacity:0}
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* ---------- CSS: HEADER ---------- */
 .header{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;
   padding:14px 6%;background:var(--header-bg);border-bottom:1px solid var(--edge);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
@@ -168,9 +169,7 @@ body.light-theme .sun-icon{display:inline}
 body.light-theme .moon-icon{display:none}
 #menu-close{display:none}
 
-/* =========================================================
-   BUTTONS
-========================================================= */
+/* ---------- CSS: BUTTONS ---------- */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border:1px solid var(--edge);
   border-radius:999px;font-weight:800;background:var(--surface);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -185,9 +184,7 @@ body.light-theme .moon-icon{display:none}
   50%{box-shadow:0 0 34px var(--glow-g),0 0 6px var(--glow-g)}
 }
 
-/* =========================================================
-   LAYOUT
-========================================================= */
+/* ---------- CSS: LAYOUT ---------- */
 main{overflow-x:clip}
 .wrap{width:min(1120px,100%);margin-inline:auto;padding-inline:6%}
 .section{padding-top:110px}
@@ -196,9 +193,7 @@ main{overflow-x:clip}
 .section h2{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;margin-bottom:14px}
 .lead{color:var(--muted);font-size:1.12rem;max-width:620px;margin-bottom:44px}
 
-/* =========================================================
-   HERO (text + portrait with orbits)
-========================================================= */
+/* ---------- CSS: HERO (text + portrait with orbits) ---------- */
 .hero{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
   width:min(1120px,100%);margin-inline:auto;min-height:calc(100svh - 72px);padding:56px 6% 40px}
 .hero-text{animation:rise2 .9s cubic-bezier(.2,.8,.2,1) both}
@@ -211,7 +206,6 @@ main{overflow-x:clip}
 @keyframes rise2{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* portrait */
 .portrait{position:relative;width:min(400px,86%);aspect-ratio:4/5;margin-inline:auto;
   --rx:0deg;--ry:0deg;perspective:900px}
 .aura{position:absolute;inset:-12%;border-radius:50%;
@@ -230,7 +224,6 @@ main{overflow-x:clip}
 .orbit i:nth-child(3){top:calc(50% - 7px);left:-7px;background:var(--violet);filter:drop-shadow(0 0 6px var(--violet))}
 .orbit i:nth-child(4){top:calc(50% - 7px);right:-7px;background:var(--purple-ink);filter:drop-shadow(0 0 6px var(--purple-ink))}
 
-/* photo with glow */
 .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;
   display:block;border:0;border-radius:28px;
   box-shadow:0 0 30px var(--glow-g),0 0 70px var(--glow-v);
@@ -251,13 +244,12 @@ main{overflow-x:clip}
 .chip-d{bottom:2%;right:-6%;color:var(--on-gold);background:linear-gradient(135deg,var(--gold),#ffe9a0);
   border-color:transparent;box-shadow:0 0 24px var(--glow-g);animation-delay:-2.4s}
 
-/* =========================================================
-   STATS (skills)
-========================================================= */
+/* ---------- CSS: STATS (skills), 3 columns x 2 rows with divider lines ---------- */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);
   border:1px solid var(--edge);border-radius:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.stat{padding:24px 16px;text-align:center;border-right:1px solid var(--edge)}
-.stat:last-child{border-right:0}
+.stat{padding:24px 16px;text-align:center;border-right:1px solid var(--edge);border-bottom:1px solid var(--edge)}
+.stat:nth-child(3n){border-right:0}
+.stat:nth-child(n+4){border-bottom:0}
 .stat strong{display:block;font-family:var(--head);font-size:clamp(1.25rem,2.2vw,1.9rem);font-weight:700;line-height:1.15;color:var(--blue-ink)}
 .stat:nth-child(2) strong{color:var(--gold-ink)}
 .stat:nth-child(3) strong{color:var(--violet-ink)}
@@ -265,9 +257,7 @@ main{overflow-x:clip}
 .stat:nth-child(5) strong{color:var(--indigo-ink)}
 .stat:nth-child(6) strong{color:var(--glow-v)}
 
-/* =========================================================
-   CARDS / JOURNEY
-========================================================= */
+/* ---------- CSS: CARDS / JOURNEY ---------- */
 .t-item,.m-card{background:var(--surface);border:1px solid var(--edge);border-radius:24px;
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   transition:transform .3s,box-shadow .3s,border-color .3s}
@@ -284,45 +274,44 @@ main{overflow-x:clip}
 .t-item h3{font-size:1.6rem;font-weight:600;margin-bottom:6px}
 .company{color:var(--blue-ink);font-weight:800;margin-bottom:10px}
 
-/* =========================================================
-   SHOWCASE
-========================================================= */
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:72px}
-.feature:last-child{margin-bottom:0}
-.feature:nth-child(even) .feature-text{order:2}
-.feature h3{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:700;margin-bottom:14px}
-.feature p{color:var(--muted);margin-bottom:20px;max-width:480px}
+/* ---------- CSS: SHOWCASE (6 fixed industries, rotating projects) ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
 .chips li{display:flex;align-items:center;gap:7px;padding:5px 13px;background:var(--surface);
   border:1px solid var(--edge);border-radius:999px;font-weight:700;font-size:.88rem;transition:box-shadow .25s,border-color .25s}
 .chips li:hover{border-color:var(--gold);box-shadow:0 0 16px var(--glow-g)}
 .chips li::before{content:"\2726";color:var(--gold-ink);font-size:.8rem}
 
-.viz{position:relative;min-height:290px;display:grid;place-items:center;padding:46px 22px 22px;
-  border-radius:28px;border:1px solid var(--edge);background:var(--viz-bg);overflow:hidden;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  transition:transform .35s,box-shadow .35s}
-.viz::before{content:"";position:absolute;inset:0;opacity:.5;
-  background-image:linear-gradient(var(--edge) 1px,transparent 1px),linear-gradient(90deg,var(--edge) 1px,transparent 1px);
-  background-size:28px 28px;
-  -webkit-mask-image:radial-gradient(ellipse at center,#000 25%,transparent 80%);
-  mask-image:radial-gradient(ellipse at center,#000 25%,transparent 80%)}
-.viz:hover{transform:translateY(-6px)}
-.v1{box-shadow:0 0 44px var(--glow-v)}
-.v2{box-shadow:0 0 44px var(--glow-g)}
-.v3{box-shadow:0 0 44px var(--glow-b)}
-.v1:hover{box-shadow:0 0 64px var(--glow-v)}
-.v2:hover{box-shadow:0 0 64px var(--glow-g)}
-.v3:hover{box-shadow:0 0 64px var(--glow-b)}
+/* countdown bar (restarts every 45 seconds) */
+.rot-track{height:4px;max-width:620px;margin:-20px 0 36px;border-radius:4px;background:var(--edge);overflow:hidden}
+#rot-bar{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--gold));
+  animation:rotbar 45s linear forwards}
+@keyframes rotbar{to{width:100%}}
+
+/* industry cards */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ind{display:flex;flex-direction:column;overflow:hidden;background:var(--surface);border:1px solid var(--edge);
+  border-radius:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  transition:transform .3s,box-shadow .3s,border-color .3s}
+.ind:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 0 34px var(--glow-g)}
+.ind-viz{position:relative;display:grid;place-items:center;min-height:175px;padding:44px 16px 10px;background:var(--viz-bg)}
+.ind-viz svg{width:100%;max-width:210px;height:auto;overflow:visible}
 .viz-label{position:absolute;left:18px;top:16px;z-index:2;padding:4px 13px;border-radius:999px;
   background:var(--solid);border:1px solid var(--edge);color:var(--gold-ink);font-weight:800;font-size:.82rem}
-.viz-svg{position:relative;width:100%;max-width:340px;height:auto;overflow:visible}
+.ind-body{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
+.proj{flex:1;min-height:215px;transition:opacity .5s,transform .5s}
+.proj.out{opacity:0;transform:translateY(8px)}
+.proj h4{font-family:var(--head);font-size:1.3rem;font-weight:600;line-height:1.2;margin-bottom:8px}
+.proj p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.dots{display:flex;gap:6px;margin-top:14px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--edge);transition:background .3s,box-shadow .3s}
+.dots i.on{background:var(--gold);box-shadow:0 0 10px var(--glow-g)}
 
+/* graphic helpers */
 .f-gold{fill:var(--gold)}.f-blue{fill:var(--blue)}.f-violet{fill:var(--violet)}
 .s-gold{stroke:var(--gold)}.s-blue{stroke:var(--blue)}.s-violet{stroke:var(--violet)}.s-edge{stroke:var(--edge)}
-.f-ink{fill:var(--ink)}.f-muted{fill:var(--muted)}.f-track{fill:var(--edge)}
+.f-ink{fill:var(--ink)}.f-track{fill:var(--edge)}
 
-/* molecule */
+/* graphic animations: molecule (pharma) */
 .bond{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
   filter:drop-shadow(0 0 5px var(--glow-b))}
 .atom{transform-box:fill-box;transform-origin:center;animation:pulseAtom 3s ease-in-out infinite;
@@ -331,28 +320,14 @@ main{overflow-x:clip}
 .atom:nth-of-type(3n){animation-delay:-1.6s}
 @keyframes pulseAtom{0%,100%{transform:scale(1)}50%{transform:scale(1.28)}}
 .fillbar{transform-box:fill-box;transform-origin:left;animation:fillBar 3.6s ease-in-out infinite alternate}
-.fillbar:nth-of-type(4){animation-delay:-1.2s}
-.fillbar:nth-of-type(6){animation-delay:-2.4s}
 @keyframes fillBar{0%{transform:scaleX(.15)}100%{transform:scaleX(1)}}
 
-/* gauge */
-.gauge-fill{stroke-dasharray:267;animation:gaugeFill 4s ease-in-out infinite alternate;
-  filter:drop-shadow(0 0 6px var(--glow-g))}
-@keyframes gaugeFill{0%{stroke-dashoffset:250}100%{stroke-dashoffset:70}}
-.needle{transform-origin:150px 130px;animation:needle 4s ease-in-out infinite alternate}
-@keyframes needle{0%{transform:rotate(-72deg)}100%{transform:rotate(30deg)}}
-.rule{animation:rulePop 4s ease-in-out infinite}
-.rule:nth-of-type(4){animation-delay:-.7s}
-.rule:nth-of-type(5){animation-delay:-1.4s}
-@keyframes rulePop{0%,100%{opacity:.55}50%{opacity:1}}
-
-/* dashboard */
+/* graphic animations: bars + trend (banking) */
 .gbar{transform-box:fill-box;transform-origin:bottom;animation:growBar 2.8s ease-in-out infinite alternate}
 .gbar:nth-of-type(2){animation-delay:-.4s}
 .gbar:nth-of-type(3){animation-delay:-.8s}
 .gbar:nth-of-type(4){animation-delay:-1.2s}
 .gbar:nth-of-type(5){animation-delay:-1.6s}
-.gbar:nth-of-type(6){animation-delay:-2s}
 @keyframes growBar{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
 .trend{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
   stroke-dasharray:260;animation:drawLine 3.4s ease-in-out infinite alternate;
@@ -361,9 +336,21 @@ main{overflow-x:clip}
 .endpoint{fill:#fff;transform-box:fill-box;transform-origin:center;animation:pulseAtom 1.8s ease-in-out infinite;
   filter:drop-shadow(0 0 8px var(--gold))}
 
-/* =========================================================
-   MILESTONES
-========================================================= */
+/* graphic animations: signal waves (telecom) */
+.wave{fill:none;stroke:var(--blue);stroke-width:3.5;stroke-linecap:round;animation:wave 1.8s ease-in-out infinite}
+.w2{animation-delay:-.9s}
+@keyframes wave{0%,100%{opacity:.2}50%{opacity:1}}
+
+/* graphic animations: ECG line (healthcare) */
+.ecg{fill:none;stroke:var(--blue);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:340;animation:ecg 3s linear infinite;filter:drop-shadow(0 0 6px var(--glow-b))}
+@keyframes ecg{from{stroke-dashoffset:340}to{stroke-dashoffset:0}}
+
+/* graphic animations: gears (manufacturing) */
+.gear{transform-box:fill-box;transform-origin:center;animation:spin 9s linear infinite}
+.gear.rev{animation-direction:reverse;animation-duration:7s}
+
+/* ---------- CSS: MILESTONES ---------- */
 .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .m-card{padding:28px}
 .m-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:22px;border-radius:50%;
@@ -374,9 +361,7 @@ main{overflow-x:clip}
 .m-card h3{font-size:1.4rem;font-weight:600;margin-bottom:8px}
 .m-card p{color:var(--muted)}
 
-/* =========================================================
-   CONNECT + SOCIAL ICONS
-========================================================= */
+/* ---------- CSS: CONNECT + SOCIAL ICONS ---------- */
 .connect-card{position:relative;overflow:hidden;padding:clamp(32px,6vw,64px);
   background:linear-gradient(135deg,#071050 0%,#12198f 55%,#3a2bc0 100%);color:#ffffff;
   border-radius:32px;box-shadow:0 0 60px var(--glow-v)}
@@ -415,9 +400,7 @@ main{overflow-x:clip}
   100%{box-shadow:0 0 0 22px rgba(37,211,102,0),0 0 18px rgba(37,211,102,.5)}
 }
 
-/* =========================================================
-   PASSCODE POPUP
-========================================================= */
+/* ---------- CSS: PASSCODE POPUP ---------- */
 .modal{position:fixed;inset:0;z-index:500;display:grid;place-items:center;padding:20px;background:rgba(1,3,15,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal[hidden]{display:none}
 .modal-card{position:relative;width:min(400px,100%);padding:32px 28px;background:var(--solid);border:1px solid var(--edge);border-radius:24px;box-shadow:0 0 50px var(--glow-v)}
@@ -427,17 +410,13 @@ main{overflow-x:clip}
 .modal-x{position:absolute;top:12px;right:12px;width:36px;height:36px}
 .modal-card .rm-msg{min-height:1.4em;margin-bottom:12px;color:#ff8f8f;font-weight:700;font-size:.92rem}
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ---------- CSS: FOOTER ---------- */
 .footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:100px;padding:26px 6%;
   border-top:1px solid var(--edge);color:var(--muted);font-size:.92rem}
 .footer a{color:var(--gold-ink);font-weight:800}
 .footer a:hover{text-decoration:underline}
 
-/* =========================================================
-   MOBILE MENU + RESPONSIVE
-========================================================= */
+/* ---------- CSS: MOBILE MENU + RESPONSIVE ---------- */
 @media (max-width:900px){
   .navigation{position:fixed;top:0;right:0;z-index:300;flex-direction:column;align-items:flex-start;justify-content:center;
     gap:8px;width:min(380px,86vw);height:100dvh;padding:90px 32px 40px;margin:0;
@@ -455,16 +434,11 @@ main{overflow-x:clip}
   .intro{margin-inline:auto}
   .cta-row{justify-content:center}
   .portrait{order:-1;width:min(340px,76%);margin-top:20px}
-  .feature{grid-template-columns:1fr;gap:28px;margin-bottom:56px}
-  .feature:nth-child(even) .feature-text{order:0}
+  .ind-grid{grid-template-columns:repeat(2,1fr)}
   .m-grid{grid-template-columns:1fr}
   .t-item{grid-template-columns:1fr;gap:14px}
   .section{padding-top:84px}
   .moon{width:60px;height:60px;box-shadow:inset -17px 6px 0 0 #ffe9a8}
-  .stats{grid-template-columns:repeat(3,1fr)}
-  .stat{border-bottom:1px solid var(--edge)}
-  .stat:nth-child(3n){border-right:0}
-  .stat:nth-child(n+4){border-bottom:0}
 }
 @media (min-width:901px){#menu-toggle{display:none}}
 @media (max-width:600px){
@@ -475,6 +449,7 @@ main{overflow-x:clip}
   .stat{border-right:0;border-bottom:1px solid var(--edge)}
   .stat:nth-child(n+4){border-bottom:1px solid var(--edge)}
   .stat:last-child{border-bottom:0}
+  .ind-grid{grid-template-columns:1fr}
   .timeline{padding-left:32px}
   .t-item::before{left:-32px}
   .chip{font-size:.78rem;padding:6px 12px}
@@ -485,11 +460,19 @@ main{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* =====================================================================
+   ===================== CSS ENDS HERE =================================
+   ===================================================================== */
 </style>
 </head>
-<body>
 
-<!-- MOVING BACKGROUND -->
+<body>
+<!-- =====================================================================
+     ===================== HTML STARTS HERE ==============================
+     ===================================================================== -->
+
+<!-- HTML: MOVING BACKGROUND -->
 <div class="bg" aria-hidden="true">
   <div class="sky"></div>
   <div class="layer night-only stars" id="stars"></div>
@@ -501,6 +484,7 @@ main{overflow-x:clip}
   <div class="layer night-only" id="fireworks"></div>
 </div>
 
+<!-- HTML: HEADER -->
 <header class="header">
   <a href="#Overview" class="logo">kotha gauni NEHA reddy</a>
 
@@ -523,7 +507,7 @@ main{overflow-x:clip}
 
 <main>
 
-  <!-- OVERVIEW -->
+  <!-- HTML: OVERVIEW -->
   <section id="Overview" class="hero">
     <div class="hero-text">
       <span class="pill">Once upon a dataset&hellip;</span>
@@ -548,7 +532,7 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- HTML: STATS (skills) -->
   <section class="wrap" aria-label="Highlights" style="margin-top:70px">
     <div class="stats">
       <div class="stat"><strong>Full Stack Developer</strong></div>
@@ -560,7 +544,7 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <!-- JOURNEY -->
+  <!-- HTML: JOURNEY -->
   <section id="Journey" class="wrap section">
     <span class="pill">Where I've been</span>
     <h2>My Journey</h2>
@@ -596,120 +580,16 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <!-- SHOWCASE -->
+  <!-- HTML: SHOWCASE (cards are filled in by the JAVASCRIPT section below) -->
   <section id="Showcase" class="wrap section">
-    <span class="pill">Things I've built</span>
+    <span class="pill">Industry projects</span>
     <h2>My Showcase</h2>
-    <p class="lead">A collection of projects where business meets data, finance and technology.</p>
-
-    <!-- PROJECT 1: molecule -->
-    <article class="feature">
-      <div class="feature-text">
-        <h3>Adverse Drug Reaction Prediction</h3>
-        <p>A machine learning project exploring drug safety through multi-label adverse drug reaction prediction.</p>
-        <ul class="chips"><li>Python</li><li>RDKit</li><li>Scikit-learn</li></ul>
-      </div>
-      <div class="viz v1">
-        <span class="viz-label">Machine Learning</span>
-        <svg class="viz-svg" viewBox="0 0 300 220" role="img" aria-label="Animated molecule diagram with prediction bars">
-          <g class="bond">
-            <polygon points="100,52 140,75 140,121 100,144 60,121 60,75"/>
-            <path d="M140 75 L186 50 M140 121 L190 140 M186 50 L232 70"/>
-          </g>
-          <circle class="atom f-gold"   style="color:var(--gold)"   cx="100" cy="52"  r="8"/>
-          <circle class="atom f-blue"   style="color:var(--blue)"   cx="140" cy="75"  r="8"/>
-          <circle class="atom f-violet" style="color:var(--violet)" cx="140" cy="121" r="8"/>
-          <circle class="atom f-gold"   style="color:var(--gold)"   cx="100" cy="144" r="8"/>
-          <circle class="atom f-blue"   style="color:var(--blue)"   cx="60"  cy="121" r="8"/>
-          <circle class="atom f-violet" style="color:var(--violet)" cx="60"  cy="75"  r="8"/>
-          <circle class="atom f-gold"   style="color:var(--gold)"   cx="186" cy="50"  r="9"/>
-          <circle class="atom f-blue"   style="color:var(--blue)"   cx="190" cy="140" r="9"/>
-          <circle class="atom f-violet" style="color:var(--violet)" cx="232" cy="70"  r="8"/>
-
-          <rect class="f-track" x="40" y="182" width="62" height="9" rx="4.5"/>
-          <rect class="fillbar f-gold" x="40" y="182" width="62" height="9" rx="4.5"/>
-          <rect class="f-track" x="119" y="182" width="62" height="9" rx="4.5"/>
-          <rect class="fillbar f-blue" x="119" y="182" width="62" height="9" rx="4.5"/>
-          <rect class="f-track" x="198" y="182" width="62" height="9" rx="4.5"/>
-          <rect class="fillbar f-violet" x="198" y="182" width="62" height="9" rx="4.5"/>
-        </svg>
-      </div>
-    </article>
-
-    <!-- PROJECT 2: scoring gauge -->
-    <article class="feature">
-      <div class="feature-text">
-        <h3>Performance Analytics &amp; Rule Engine</h3>
-        <p>An Excel-based performance scoring framework supporting evaluation and promotion decisions.</p>
-        <ul class="chips"><li>Excel</li><li>Data Analysis</li><li>Reporting</li></ul>
-      </div>
-      <div class="viz v2">
-        <span class="viz-label">Business Analytics</span>
-        <svg class="viz-svg" viewBox="0 0 300 220" role="img" aria-label="Animated scoring gauge with rule checks">
-          <defs>
-            <linearGradient id="gg" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" style="stop-color:var(--blue)"/><stop offset="1" style="stop-color:var(--gold)"/>
-            </linearGradient>
-          </defs>
-          <path d="M65 130 A85 85 0 0 1 235 130" fill="none" class="s-edge" stroke-width="14" stroke-linecap="round"/>
-          <path class="gauge-fill" d="M65 130 A85 85 0 0 1 235 130" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round"/>
-          <g transform="translate(150 130)" class="s-edge" stroke-width="2" stroke-linecap="round">
-            <line y1="-100" y2="-108" transform="rotate(-90)"/>
-            <line y1="-100" y2="-108" transform="rotate(-60)"/>
-            <line y1="-100" y2="-108" transform="rotate(-30)"/>
-            <line y1="-100" y2="-108"/>
-            <line y1="-100" y2="-108" transform="rotate(30)"/>
-            <line y1="-100" y2="-108" transform="rotate(60)"/>
-            <line y1="-100" y2="-108" transform="rotate(90)"/>
-          </g>
-          <g class="needle">
-            <line x1="150" y1="130" x2="150" y2="62" stroke-width="4" stroke-linecap="round" class="s-gold" style="filter:drop-shadow(0 0 5px var(--glow-g))"/>
-          </g>
-          <circle cx="150" cy="130" r="9" class="f-gold"/>
-          <circle cx="150" cy="130" r="3.5" class="f-track"/>
-
-          <g class="rule"><rect x="36" y="164" width="68" height="30" rx="15" class="f-track"/>
-            <text x="70" y="184" text-anchor="middle" font-size="13" font-weight="800" class="f-ink">&#10003; Rule 1</text></g>
-          <g class="rule"><rect x="116" y="164" width="68" height="30" rx="15" class="f-track"/>
-            <text x="150" y="184" text-anchor="middle" font-size="13" font-weight="800" class="f-ink">&#10003; Rule 2</text></g>
-          <g class="rule"><rect x="196" y="164" width="68" height="30" rx="15" class="f-track"/>
-            <text x="230" y="184" text-anchor="middle" font-size="13" font-weight="800" class="f-ink">&#10003; Rule 3</text></g>
-        </svg>
-      </div>
-    </article>
-
-    <!-- PROJECT 3: dashboard -->
-    <article class="feature">
-      <div class="feature-text">
-        <h3>Dashboards &amp; Business Insights</h3>
-        <p>Analytical reporting and KPI visualisation for business performance reviews and decision-making.</p>
-        <ul class="chips"><li>Power BI</li><li>DAX</li><li>Power Query</li></ul>
-      </div>
-      <div class="viz v3">
-        <span class="viz-label">Data Analytics</span>
-        <svg class="viz-svg" viewBox="0 0 300 220" role="img" aria-label="Animated dashboard with bars and trend line">
-          <defs>
-            <linearGradient id="gb" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" style="stop-color:var(--blue)"/><stop offset="1" style="stop-color:var(--violet);stop-opacity:.35"/>
-            </linearGradient>
-          </defs>
-          <line x1="30" y1="190" x2="270" y2="190" class="s-edge" stroke-width="2"/>
-          <rect class="gbar" x="40"  y="140" width="26" height="50"  rx="5" fill="url(#gb)"/>
-          <rect class="gbar" x="80"  y="118" width="26" height="72"  rx="5" fill="url(#gb)"/>
-          <rect class="gbar" x="120" y="130" width="26" height="60"  rx="5" fill="url(#gb)"/>
-          <rect class="gbar" x="160" y="92"  width="26" height="98"  rx="5" fill="url(#gb)"/>
-          <rect class="gbar" x="200" y="106" width="26" height="84"  rx="5" fill="url(#gb)"/>
-          <rect class="gbar" x="240" y="70"  width="26" height="120" rx="5" fill="url(#gb)"/>
-          <polyline class="trend" points="53,125 93,103 133,115 173,77 213,91 253,55"/>
-          <circle class="endpoint" cx="253" cy="55" r="6"/>
-          <rect x="34" y="26" width="64" height="26" rx="13" class="f-track"/>
-          <text x="66" y="44" text-anchor="middle" font-size="13" font-weight="800" class="f-ink">KPI &uarr;</text>
-        </svg>
-      </div>
-    </article>
+    <p class="lead">Six industries, five real-world projects each. The projects rotate every 45 seconds.</p>
+    <div class="rot-track"><div id="rot-bar"></div></div>
+    <div class="ind-grid" id="ind-grid"></div>
   </section>
 
-  <!-- MILESTONES -->
+  <!-- HTML: MILESTONES -->
   <section id="Milestones" class="wrap section">
     <span class="pill">The progress so far</span>
     <h2>Milestones &amp; Achievements</h2>
@@ -734,7 +614,7 @@ main{overflow-x:clip}
     </div>
   </section>
 
-  <!-- CONNECT -->
+  <!-- HTML: CONNECT -->
   <section id="Connect" class="wrap section">
     <div class="connect-card">
       <h2>Have something in mind?</h2>
@@ -778,17 +658,18 @@ main{overflow-x:clip}
 
 </main>
 
+<!-- HTML: FOOTER -->
 <footer class="footer">
   <p>Designed & coded by Neha ✦ HTML · CSS · JavaScript · GitHub Pages · © 2026</p>
   <a href="#Overview">Back to top &uarr;</a>
 </footer>
 
-<!-- Floating WhatsApp button -->
+<!-- HTML: FLOATING WHATSAPP BUTTON -->
 <a class="wa-float" href="https://wa.me/919398388043" target="_blank" rel="noopener noreferrer" aria-label="Message me on WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M3 21l1.65-4.8A9 9 0 1 1 8 19.4L3 21z"/><g transform="translate(6 5.7) scale(.5)"><path stroke-width="3" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></svg>
 </a>
 
-<!-- Passcode popup for resume -->
+<!-- HTML: PASSCODE POPUP FOR RESUME -->
 <div class="modal" id="resume-modal" hidden>
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="rm-title">
     <button type="button" class="icon-btn modal-x" id="rm-close" aria-label="Close">&times;</button>
@@ -800,14 +681,22 @@ main{overflow-x:clip}
   </div>
 </div>
 
+<!-- =====================================================================
+     ===================== HTML ENDS HERE ================================
+     ===================================================================== -->
+
 <script>
+/* =====================================================================
+   ================= JAVASCRIPT STARTS HERE ============================
+   ===================================================================== */
+
 const themeToggle = document.getElementById("theme-toggle");
 const menuToggle = document.getElementById("menu-toggle");
 const menuClose = document.getElementById("menu-close");
 const navigation = document.getElementById("navigation");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* THEME: night by default, choice is saved */
+/* JS: THEME (night by default, choice is saved) */
 function applyTheme(isLight) {
   document.body.classList.toggle("light-theme", isLight);
   themeToggle.setAttribute("aria-label", isLight ? "Switch to night theme" : "Switch to day theme");
@@ -822,7 +711,7 @@ themeToggle.addEventListener("click", function () {
   try { localStorage.setItem("theme", isLight ? "light" : "dark"); } catch (e) {}
 });
 
-/* SIDE MENU (mobile) */
+/* JS: SIDE MENU (mobile) */
 function openMenu() {
   navigation.classList.add("is-open");
   menuToggle.setAttribute("aria-expanded", "true");
@@ -843,7 +732,7 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && navigation.classList.contains("is-open")) { closeMenu(); menuToggle.focus(); }
 });
 
-/* BACKGROUND: stars */
+/* JS: BACKGROUND, stars */
 (function () {
   const wrap = document.getElementById("stars");
   const count = window.innerWidth < 700 ? 60 : 130;
@@ -860,7 +749,7 @@ document.addEventListener("keydown", function (e) {
   }
 })();
 
-/* BACKGROUND: rising sparkles */
+/* JS: BACKGROUND, rising sparkles */
 (function () {
   const wrap = document.getElementById("sparks");
   const colors = ["#ffd45c", "#8fd6ff", "#ff8fd1", "#ffffff", "#b8a4ff"];
@@ -879,7 +768,7 @@ document.addEventListener("keydown", function (e) {
   }
 })();
 
-/* BACKGROUND: fireworks (night only) */
+/* JS: BACKGROUND, fireworks (night only) */
 (function () {
   if (reduceMotion) return;
   const layer = document.getElementById("fireworks");
@@ -909,7 +798,7 @@ document.addEventListener("keydown", function (e) {
   setInterval(burst, 2600);
 })();
 
-/* PORTRAIT: gentle 3D tilt that follows the pointer */
+/* JS: PORTRAIT, gentle 3D tilt that follows the pointer */
 (function () {
   const p = document.getElementById("portrait");
   if (!p || reduceMotion) return;
@@ -926,7 +815,130 @@ document.addEventListener("keydown", function (e) {
   });
 })();
 
-/* RESUME: passcode-protected download */
+/* JS: SHOWCASE, 6 fixed industries + graphics, 5 projects each rotating every 45 seconds */
+(function () {
+  const SECONDS = 45;   /* <-- change this number to change the rotation time */
+
+  /* ===== EDIT PROJECTS HERE. Format: ["Title", "Description", ["Tag 1", "Tag 2"]] ===== */
+  const DATA = [
+    { name: "Banking &amp; Financial Services", g: "fin", p: [
+      ["Credit Risk Application Scorecard", "Develop Machine Learning models to predict whether a loan applicant is likely to repay or default using customer profile, income, credit bureau score, and financial history.", ["Machine Learning", "Credit Risk"]],
+      ["IFRS 9 Expected Credit Loss (ECL)", "Build Probability of Default (PD), Loss Given Default (LGD), and Exposure at Default (EAD) models to estimate Expected Credit Loss for financial reporting and portfolio risk management.", ["PD / LGD / EAD", "IFRS 9"]],
+      ["Credit Card Fraud Detection", "Detect fraudulent card transactions in real time using anomaly detection, Deep Learning, and behavioral analytics to minimize financial losses.", ["Anomaly Detection", "Deep Learning"]],
+      ["Anti-Money Laundering (AML) Analytics", "Identify suspicious financial transactions, money laundering patterns, and high-risk customers using AI-driven transaction monitoring and network analysis.", ["AML", "Network Analysis"]],
+      ["Agentic AI Loan Processing System", "Develop autonomous AI Agents that automate document verification, credit assessment, loan approval workflows, customer communication, and compliance checks.", ["Agentic AI", "Automation"]]
+    ]},
+    { name: "Telecom Services", g: "telecom", p: [
+      ["Customer Churn Prediction", "Predict subscribers likely to switch to competitors using usage behavior, recharge history, complaints, and service quality metrics.", ["Machine Learning", "Churn"]],
+      ["Network Fault Prediction", "Predict telecom network failures before they occur using equipment logs, IoT sensor data, and predictive maintenance algorithms.", ["IoT", "Predictive Maintenance"]],
+      ["Telecom Fraud Detection", "Detect SIM fraud, subscription fraud, roaming fraud, and abnormal call patterns using Machine Learning and anomaly detection techniques.", ["Fraud", "Anomaly Detection"]],
+      ["Customer Lifetime Value (CLV) Prediction", "Estimate the long-term value of each telecom customer to optimize retention strategies and marketing investments.", ["CLV", "Retention"]],
+      ["Agentic AI Telecom Service Desk", "Build AI agents to automate complaint registration, technical troubleshooting, ticket routing, service updates, and customer support.", ["Agentic AI", "Customer Support"]]
+    ]},
+    { name: "E-Commerce Services", g: "ecom", p: [
+      ["Product Recommendation Engine", "Recommend personalized products using collaborative filtering, customer browsing history, purchase behavior, and AI recommendation algorithms.", ["Recommender", "Filtering"]],
+      ["Customer Churn Prediction", "Predict customers who are likely to stop shopping and recommend personalized offers to improve customer retention.", ["Machine Learning", "Retention"]],
+      ["Dynamic Pricing Optimization", "Optimize product pricing based on demand, competitor pricing, customer behavior, and inventory levels using AI models.", ["Pricing", "Optimization"]],
+      ["Demand Forecasting", "Forecast future product demand to optimize inventory planning, procurement, and supply chain operations.", ["Forecasting", "Supply Chain"]],
+      ["AI Shopping Assistant (RAG)", "Develop a Generative AI assistant using Retrieval-Augmented Generation (RAG) to answer customer queries about products, orders, returns, and promotions.", ["GenAI", "RAG"]]
+    ]},
+    { name: "Healthcare Services", g: "health", p: [
+      ["Disease Risk Prediction", "Predict the likelihood of diseases such as diabetes, heart disease, cancer, and stroke using patient clinical and lifestyle data.", ["Machine Learning", "Clinical Data"]],
+      ["Medical Image Analysis", "Detect diseases from X-rays, CT scans, MRI scans, and pathology images using Deep Learning and Computer Vision techniques.", ["Deep Learning", "Computer Vision"]],
+      ["Patient Readmission Prediction", "Identify patients at risk of hospital readmission to improve treatment planning and reduce healthcare costs.", ["Prediction", "Healthcare"]],
+      ["Clinical Decision Support System", "Develop AI-powered systems that assist doctors with diagnosis, treatment recommendations, and patient risk assessment.", ["Decision Support", "AI"]],
+      ["Agentic AI Clinical Workflow Automation", "Build autonomous AI agents to automate appointment scheduling, patient follow-ups, report generation, and hospital workflow management.", ["Agentic AI", "Automation"]]
+    ]},
+    { name: "Manufacturing &amp; Automobile", g: "mfg", p: [
+      ["Predictive Maintenance", "Predict equipment failures before breakdown using IoT sensors, machine data, and Machine Learning models to reduce downtime.", ["IoT", "Machine Learning"]],
+      ["Quality Defect Detection", "Automate product quality inspection using Computer Vision and Deep Learning to identify manufacturing defects in real time.", ["Computer Vision", "Deep Learning"]],
+      ["Supply Chain Analytics", "Optimize procurement, inventory, logistics, and supplier performance using predictive analytics and AI.", ["Predictive Analytics", "Logistics"]],
+      ["Digital Twin Analytics", "Create virtual AI-powered replicas of machines and production lines to simulate, monitor, and optimize manufacturing operations.", ["Digital Twin", "Simulation"]],
+      ["Connected Vehicle Analytics", "Analyze telematics, GPS, and vehicle sensor data to improve safety, predictive maintenance, fleet management, and customer experience.", ["Telematics", "Fleet"]]
+    ]},
+    { name: "Pharmaceutical Industry", g: "pharma", p: [
+      ["Drug Discovery Analytics", "Use AI and Machine Learning to identify potential drug molecules, predict drug interactions, and accelerate the drug discovery process.", ["Python", "RDKit"]],
+      ["Clinical Trial Success Prediction", "Predict the probability of successful clinical trial outcomes using historical trial data, protocol characteristics, and treatment information.", ["Prediction", "Trial Data"]],
+      ["Pharmacovigilance Analytics", "Detect drug safety issues by analyzing adverse event reports, medical literature, and patient feedback using AI and NLP.", ["NLP", "Drug Safety"]],
+      ["Adverse Drug Reaction (ADR) Prediction", "Predict patients who are at risk of experiencing adverse drug reactions using clinical history and pharmacological data.", ["Scikit-learn", "ADR"]],
+      ["Agentic AI Pharmacovigilance Automation", "Develop autonomous AI agents that process adverse event reports, generate regulatory documentation, prioritize safety cases, and automate pharmacovigilance workflows.", ["Agentic AI", "Regulatory"]]
+    ]}
+  ];
+
+  /* ===== FIXED GRAPHICS (one per industry, these never change) ===== */
+  const G = {
+    fin: '<svg viewBox="0 0 200 110"><line x1="15" y1="95" x2="185" y2="95" class="s-edge" stroke-width="2"/>' +
+      '<rect class="gbar f-blue" x="25" y="60" width="20" height="35" rx="4"/><rect class="gbar f-violet" x="58" y="45" width="20" height="50" rx="4"/>' +
+      '<rect class="gbar f-blue" x="91" y="52" width="20" height="43" rx="4"/><rect class="gbar f-violet" x="124" y="30" width="20" height="65" rx="4"/>' +
+      '<rect class="gbar f-blue" x="157" y="18" width="20" height="77" rx="4"/>' +
+      '<polyline class="trend" points="35,50 68,36 101,44 134,22 167,10"/><circle class="endpoint" cx="167" cy="10" r="5"/></svg>',
+
+    telecom: '<svg viewBox="0 0 200 110"><g class="s-gold" stroke-width="4" stroke-linecap="round" fill="none">' +
+      '<line x1="100" y1="34" x2="78" y2="98"/><line x1="100" y1="34" x2="122" y2="98"/><line x1="88" y1="68" x2="112" y2="68"/><line x1="82" y1="86" x2="118" y2="86"/></g>' +
+      '<circle class="atom f-gold" style="color:var(--gold)" cx="100" cy="28" r="7"/>' +
+      '<path class="wave" d="M82 14 Q70 28 82 42"/><path class="wave w2" d="M70 6 Q50 28 70 50"/>' +
+      '<path class="wave" d="M118 14 Q130 28 118 42"/><path class="wave w2" d="M130 6 Q150 28 130 50"/></svg>',
+
+    ecom: '<svg viewBox="0 0 200 110"><path d="M28 22 H46 L58 72 H138 L150 38 H50" fill="none" class="s-gold" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<rect class="atom f-blue" style="color:var(--blue)" x="66" y="46" width="18" height="18" rx="4"/>' +
+      '<rect class="atom f-violet" style="color:var(--violet)" x="92" y="46" width="18" height="18" rx="4"/>' +
+      '<rect class="atom f-gold" style="color:var(--gold)" x="118" y="46" width="18" height="18" rx="4"/>' +
+      '<circle class="f-gold" cx="72" cy="88" r="7"/><circle class="f-gold" cx="128" cy="88" r="7"/></svg>',
+
+    health: '<svg viewBox="0 0 200 110"><rect x="10" y="20" width="180" height="70" rx="14" class="f-track" opacity=".35"/>' +
+      '<polyline class="ecg" points="10,60 50,60 62,60 72,25 84,95 96,40 106,60 190,60"/></svg>',
+
+    mfg: '<svg viewBox="0 0 200 110">' +
+      '<g class="gear"><circle cx="78" cy="52" r="22" fill="none" class="s-gold" stroke-width="9" stroke-dasharray="8.63 8.63"/><circle cx="78" cy="52" r="20" class="f-gold"/><circle cx="78" cy="52" r="7" class="f-track"/></g>' +
+      '<g class="gear rev"><circle cx="128" cy="72" r="16" fill="none" class="s-blue" stroke-width="8" stroke-dasharray="6.28 6.28"/><circle cx="128" cy="72" r="14" class="f-blue"/><circle cx="128" cy="72" r="5" class="f-track"/></g></svg>',
+
+    pharma: '<svg viewBox="0 0 200 110"><g class="bond"><polygon points="70,22 98,38 98,70 70,86 42,70 42,38"/><path d="M98 38 L130 20 M98 70 L132 84 M130 20 L162 34"/></g>' +
+      '<circle class="atom f-gold" style="color:var(--gold)" cx="70" cy="22" r="7"/><circle class="atom f-blue" style="color:var(--blue)" cx="98" cy="38" r="7"/>' +
+      '<circle class="atom f-violet" style="color:var(--violet)" cx="98" cy="70" r="7"/><circle class="atom f-gold" style="color:var(--gold)" cx="70" cy="86" r="7"/>' +
+      '<circle class="atom f-blue" style="color:var(--blue)" cx="42" cy="70" r="7"/><circle class="atom f-violet" style="color:var(--violet)" cx="42" cy="38" r="7"/>' +
+      '<circle class="atom f-gold" style="color:var(--gold)" cx="130" cy="20" r="8"/><circle class="atom f-blue" style="color:var(--blue)" cx="132" cy="84" r="8"/>' +
+      '<circle class="atom f-violet" style="color:var(--violet)" cx="162" cy="34" r="7"/></svg>'
+  };
+
+  const grid = document.getElementById("ind-grid");
+  const bar = document.getElementById("rot-bar");
+  if (!grid) return;
+
+  /* build the 6 cards once */
+  grid.innerHTML = DATA.map(function (d, i) {
+    return '<article class="ind"><div class="ind-viz"><span class="viz-label">' + d.name + '</span>' + G[d.g] + '</div>' +
+      '<div class="ind-body"><div class="proj" id="proj' + i + '"></div>' +
+      '<div class="dots" id="dots' + i + '">' + d.p.map(function () { return "<i></i>"; }).join("") + '</div></div></article>';
+  }).join("");
+
+  function restartBar() {
+    bar.style.animation = "none"; void bar.offsetWidth;
+    bar.style.animation = "rotbar " + SECONDS + "s linear forwards";
+  }
+
+  /* show project number n in every industry card */
+  function show(n, first) {
+    DATA.forEach(function (d, i) {
+      const el = document.getElementById("proj" + i);
+      const k = n % d.p.length;
+      const p = d.p[k];
+      function paint() {
+        el.innerHTML = "<h4>" + p[0] + "</h4><p>" + p[1] + "</p><ul class='chips'>" +
+          p[2].map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>";
+        document.querySelectorAll("#dots" + i + " i").forEach(function (dot, j) { dot.classList.toggle("on", j === k); });
+        el.classList.remove("out");
+      }
+      if (first) paint(); else { el.classList.add("out"); setTimeout(paint, 500); }
+    });
+    restartBar();
+  }
+
+  let idx = 0;
+  show(0, true);
+  setInterval(function () { idx = (idx + 1) % 5; show(idx, false); }, SECONDS * 1000);
+})();
+
+/* JS: RESUME, passcode-protected download */
 (function () {
   const btn = document.getElementById("resume-btn");
   const modal = document.getElementById("resume-modal");
@@ -964,6 +976,10 @@ document.addEventListener("keydown", function (e) {
     } catch (err) { msg.textContent = "Could not load the resume file. Try again later."; }
   });
 })();
+
+/* =====================================================================
+   ================= JAVASCRIPT ENDS HERE ==============================
+   ===================================================================== */
 </script>
 </body>
 </html>
