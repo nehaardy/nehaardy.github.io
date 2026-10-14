@@ -281,10 +281,10 @@ main{overflow-x:clip}
 .chips li:hover{border-color:var(--gold);box-shadow:0 0 16px var(--glow-g)}
 .chips li::before{content:"\2726";color:var(--gold-ink);font-size:.8rem}
 
-/* countdown bar (restarts every 12 seconds) */
+/* countdown bar (restarts every 5 seconds) */
 .rot-track{height:4px;max-width:620px;margin:-20px 0 36px;border-radius:4px;background:var(--edge);overflow:hidden}
 #rot-bar{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--gold));
-  animation:rotbar 12s linear forwards}
+  animation:rotbar 5s linear forwards}
 @keyframes rotbar{to{width:100%}}
 
 /* industry cards */
@@ -815,9 +815,9 @@ document.addEventListener("keydown", function (e) {
   });
 })();
 
-/* JS: SHOWCASE, 6 fixed industries + graphics, 5 projects each rotating every 12 seconds */
+/* JS: SHOWCASE, 6 fixed industries + graphics, 5 projects each rotating every 5 seconds */
 (function () {
-  const SECONDS = 12;   /* <-- change this number to change the rotation time */
+  const SECONDS = 5;   /* <-- change this number to change the rotation time */
 
   /* ===== EDIT PROJECTS HERE. Format: ["Title", "Description", ["Tag 1", "Tag 2"]] ===== */
   const DATA = [
