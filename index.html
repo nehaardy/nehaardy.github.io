@@ -281,10 +281,10 @@ main{overflow-x:clip}
 .chips li:hover{border-color:var(--gold);box-shadow:0 0 16px var(--glow-g)}
 .chips li::before{content:"\2726";color:var(--gold-ink);font-size:.8rem}
 
-/* countdown bar (restarts every 45 seconds) */
+/* countdown bar (restarts every 12 seconds) */
 .rot-track{height:4px;max-width:620px;margin:-20px 0 36px;border-radius:4px;background:var(--edge);overflow:hidden}
 #rot-bar{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--gold));
-  animation:rotbar 45s linear forwards}
+  animation:rotbar 10s linear forwards}
 @keyframes rotbar{to{width:100%}}
 
 /* industry cards */
@@ -584,7 +584,7 @@ main{overflow-x:clip}
   <section id="Showcase" class="wrap section">
     <span class="pill">Industry projects</span>
     <h2>My Showcase</h2>
-    <p class="lead">Six industries, five real-world projects each. The projects rotate every 45 seconds.</p>
+    <p class="lead">Six industries, five real-world projects each. The projects rotate every 12 seconds.</p>
     <div class="rot-track"><div id="rot-bar"></div></div>
     <div class="ind-grid" id="ind-grid"></div>
   </section>
@@ -815,9 +815,9 @@ document.addEventListener("keydown", function (e) {
   });
 })();
 
-/* JS: SHOWCASE, 6 fixed industries + graphics, 5 projects each rotating every 45 seconds */
+/* JS: SHOWCASE, 6 fixed industries + graphics, 5 projects each rotating every 12 seconds */
 (function () {
-  const SECONDS = 45;   /* <-- change this number to change the rotation time */
+  const SECONDS = 12;   /* <-- change this number to change the rotation time */
 
   /* ===== EDIT PROJECTS HERE. Format: ["Title", "Description", ["Tag 1", "Tag 2"]] ===== */
   const DATA = [
