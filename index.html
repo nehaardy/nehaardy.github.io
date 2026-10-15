@@ -1007,7 +1007,7 @@ document.addEventListener("keydown", function (e) {
   document.addEventListener("pointermove", target, { passive: true });
   document.addEventListener("pointerdown", function (e) {
     target(e);
-    if (trickStart < 0 && Math.hypot(e.clientX - (cx + 29), e.clientY - (cy + 22)) < 50) { trickStart = performance.now(); bubbleUntil = trickStart + TRICK + 1800; bubble.classList.add("show"); }
+    if (trickStart < 0 && Math.hypot(e.clientX - (cx + 29), e.clientY - (cy + 22)) < 50) { trickStart = performance.now(); bubbleUntil = trickStart + TRICK + 4700; bubble.classList.add("show"); }
   }, { passive: true });
 
   const QUOTE = "According to aerodynamic laws, the bumblebee cannot fly. Its body weight is not the right proportion to its wingspan. Ignoring these laws, the bee flies anyway \uD83D\uDC1D";
